@@ -14,4 +14,4 @@ In order to use this program, use the following arguments:
 
 		arg3: -u or -U for undoing the last run before running
 
-		i.e. java AutoCompiler -a -2 LineAndPointTest.java -u
+		i.e. java AutoGrader -a -2 LineAndPointTest.java -u
