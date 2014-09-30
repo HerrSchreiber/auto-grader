@@ -1,6 +1,10 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ * Tests Project 5 - Intro to Magpie
+ * @author Rob Schreiber
+ */
 public class MagpieTest1 {
     private int passes = 0;
     private int failures = 0;
@@ -9,6 +13,12 @@ public class MagpieTest1 {
     private String[] keywords = new String[100];
     private String[] responses = new String[100];
 
+    /**
+     * Reads in the keywords and responses from README.TXT and
+     * stores them in two String arrays called keywords and
+     * responses. Then it calls the runTests method.
+     * @param args Not used
+     */
     public static void main(String[] args) {
         Scanner fileInput = new Scanner(new File("README.TXT"));
         String[] ary = null;
@@ -30,7 +40,7 @@ public class MagpieTest1 {
                 responses[] = "Interesting, tell me more.";
                 responses[] = "Hmmm.";
                 responses[] = "Do you really think so?";
-                responses[] = "You don't say.";                
+                responses[] = "You don't say.";
                 i = 4;
             }
             else {
@@ -53,16 +63,31 @@ public class MagpieTest1 {
         for (String k: keywords) {
             printTest(k + " test", !contains(responses, m.getResponse(k)));
         }
+        printTest("randomResponsesTest", randomResponseseTest());
         /////////////////
         //final verdict
         /////////////////
         printFinalSummary();
     }
 
-    private boolean testRandomResponses() {
+    /**
+     * Tests to make sure all the Random Responses in the readme are present
+     * in the actual program operation.
+     */
+    private boolean randomResponsesTest() {
+        boolean success = true;
         Magpie m = new Magpie();
-        
-    }    
+        boolean[] responseFound = new boolean[response.length];
+        for(int i = 0; i < responses.length * 10; i++) {
+            String response = m.getResponse("fdafdsafdsa");
+            responseFound[Arrays.binarySearch(responses, response)] = true;
+        }
+        for (int = 0; i < response.length; i++) {
+            if(!responseFound[i]) success = false;
+            System.out.println(responses[i] + "\t\t\t" + responseFound[i]? "found":"not found");
+        }
+        return success;
+    }
 
     ////////////////////////////////
     // utility methods for testing
@@ -96,6 +121,10 @@ public class MagpieTest1 {
         return (Math.abs(v1 - v2) < TOLERANCE);
     }
 
+    /** Returns true or false whether or not an element is in a sorted String array
+     * @param ary The sorted String array
+     * @param s The element to be found in the String array
+     */
     private boolean contains(String[] ary, String s) {
         return Arrays.binarySearch(ary, s) >= 0 ;
     }
