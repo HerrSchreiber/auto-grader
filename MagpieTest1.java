@@ -20,36 +20,49 @@ public class MagpieTest1 {
      * @param args Not used
      */
     public static void main(String[] args) {
-        Scanner fileInput = new Scanner(new File("README.TXT"));
+    	MagpieTest1 tester = new MagpieTest1(); //to avoid every method being static
+    	Scanner fileInput = null;
+        try {
+        	fileInput = new Scanner(new File("README.TXT"));
+        }
+        catch (FileNotFoundException e) {
+        	System.out.println("README.TXT doesn't exist");
+        	System.exit(1);
+        }
         String[] ary = null;
         String temp = null;
         int i = 0;
         while (fileInput.hasNext()) {
             temp = fileInput.nextLine();
             if(temp.toLowerCase().indexOf("keyword") >= 0) {
-                ary = keywords;
-                keywords[0] = "Schreiber";
-                keywords[1] = "dog";
-                keywords[2] = "cat";
-                keywords[3] = "";
-                keywords[4] = "    ";
+                ary = tester.keywords;
+                tester.keywords[0] = "Schreiber";
+                tester.keywords[1] = "dog";
+                tester.keywords[2] = "cat";
+                tester.keywords[3] = "";
+                tester.keywords[4] = "    ";
                 i = 5;
             }
             else if(temp.toLowerCase().indexOf("response") >= 0) {
-                ary = responses;
-                responses[] = "Interesting, tell me more.";
-                responses[] = "Hmmm.";
-                responses[] = "Do you really think so?";
-                responses[] = "You don't say.";
+                ary = tester.responses;
+                tester.responses[0] = "Interesting, tell me more.";
+                tester.responses[1] = "Hmmm.";
+                tester.responses[2] = "Do you really think so?";
+                tester.responses[3] = "You don't say.";
                 i = 4;
             }
             else {
                 ary[i++] = temp;
             }
         }
-        Arrays.sort(keywords);
-        Arrays.sort(reponses);
-        MagpieTest1 tester = new MagpieTest1(); //to avoid every method being static
+        for (String s : tester.keywords) {
+            System.out.println(s);
+        }
+        for (String s : tester.responses) {
+            System.out.println(s);
+        }
+        Arrays.sort(tester.keywords);
+        Arrays.sort(tester.responses);
         tester.runTests();
     }
     
@@ -63,7 +76,7 @@ public class MagpieTest1 {
         for (String k: keywords) {
             printTest(k + " test", !contains(responses, m.getResponse(k)));
         }
-        printTest("randomResponsesTest", randomResponseseTest());
+        printTest("randomResponsesTest", randomResponsesTest());
         /////////////////
         //final verdict
         /////////////////
@@ -77,14 +90,14 @@ public class MagpieTest1 {
     private boolean randomResponsesTest() {
         boolean success = true;
         Magpie m = new Magpie();
-        boolean[] responseFound = new boolean[response.length];
+        boolean[] responseFound = new boolean[responses.length];
         for(int i = 0; i < responses.length * 10; i++) {
             String response = m.getResponse("fdafdsafdsa");
             responseFound[Arrays.binarySearch(responses, response)] = true;
         }
-        for (int = 0; i < response.length; i++) {
+        for (int i = 0; i < responses.length; i++) {
             if(!responseFound[i]) success = false;
-            System.out.println(responses[i] + "\t\t\t" + responseFound[i]? "found":"not found");
+            System.out.println(responses[i] + "\t\t\t" + (responseFound[i]?"found":"not found"));
         }
         return success;
     }
