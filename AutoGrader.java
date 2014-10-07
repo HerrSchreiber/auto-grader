@@ -9,7 +9,7 @@ import java.util.*;
 public class AutoGrader {
 	private static enum classes {AP_COMPUTER_SCIENCE, ADVANCED_COMPUTER_SCIENCE};
 	private static classes classType;
-	private static String projectRoot = "C:\\Users\\work\\google drive\\CS Projects\\2014-2015\\";
+	private static String projectRoot = "C:\\Users\\schrer56\\google drive\\CS Projects\\2014-2015\\";
 	private static int projectNum;
 	private static File output;
 	private static ArrayList<Student> students = new ArrayList<Student>();
@@ -125,11 +125,11 @@ public class AutoGrader {
 	                    		pb.directory(f.getParentFile());
 	                    		File log = new File(f.getParent() + "\\log.txt");
 	                    		pb.redirectOutput(log);
-	                    		pb.start();
+	                    		Process p = pb.start();
 	                    		try {
-		                    		Thread.sleep(500);
+	                    			p.waitFor();
 	                    		}
-	                    		catch (InterruptedException e) {
+	                    		catch(InterruptedException e) {
 	                    			e.printStackTrace();
 	                    		}
 	                    		tempStudent.addDescription(stringify(log));
@@ -174,7 +174,13 @@ public class AutoGrader {
 		try {
 			ProcessBuilder pb = new ProcessBuilder ("javac", "-Xstdout", "log.txt", f.getName());
 			pb.directory(f.getParentFile());
-			pb.start();						
+			Process p = pb.start();
+			try {
+				p.waitFor();
+			}
+			catch(InterruptedException e) {
+				e.printStackTrace();
+			}
 			result += stringify(new File(f.getParent() + "\\log.txt"));
 		}
 		catch (IOException e) {
@@ -192,12 +198,6 @@ public class AutoGrader {
 	 */
 	private static String stringify(File f) {
 		String result = "";
-		try {
-		    if (f.getName().equals("log.txt"))
-		    	Thread.sleep(250);                 //1000 milliseconds is one second.
-		} catch(InterruptedException ex) {
-		    Thread.currentThread().interrupt();
-		}
 		try {
 			Scanner sc = new Scanner(f);
 			while (sc.hasNext()) {

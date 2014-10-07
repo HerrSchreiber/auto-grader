@@ -29,11 +29,15 @@ public class MagpieTest1 {
         	System.out.println("README.TXT doesn't exist");
         	System.exit(1);
         }
-        String[] ary = null;
+        String[] ary = new String[100];
         String temp = null;
         int i = 0;
         while (fileInput.hasNext()) {
             temp = fileInput.nextLine();
+            if (temp.length()>0) {
+                if (temp.charAt(0) == '"') temp = temp.substring(1);
+                if (temp.charAt(temp.length() - 1) == '"') temp = temp.substring(0, temp.length() - 1);
+            }
             if(temp.toLowerCase().indexOf("keyword") >= 0) {
                 ary = tester.keywords;
                 tester.keywords[0] = "Schreiber";
@@ -56,7 +60,7 @@ public class MagpieTest1 {
                 tester.responses[3] = "You don't say.";
                 i = 4;
             }
-            else if (!temp.equals("")){
+            else if (!temp.equals("") && !temp.equals("Schreiber") && !temp.equals("dog") && !temp.equals("cat") && !temp.equals("Interesting, tell me more.") && !temp.equals("Hmmm.") && !temp.equals("Do you really think so?") && !temp.equals("You don't say.")){
                 ary[i++] = temp;
             }
         }
@@ -68,6 +72,7 @@ public class MagpieTest1 {
         for (String s : tester.keywords) {
             System.out.println(s);
         }
+        System.out.println();
         for (String s : tester.responses) {
             System.out.println(s);
         }
