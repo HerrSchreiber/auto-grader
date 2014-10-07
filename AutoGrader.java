@@ -6,7 +6,7 @@ import java.util.*;
  *
  * @author Rob Schreiber
  */
-public class AutoCompiler {
+public class AutoGrader {
 	private static enum classes {AP_COMPUTER_SCIENCE, ADVANCED_COMPUTER_SCIENCE};
 	private static classes classType;
 	private static String projectRoot = "C:\\Users\\work\\google drive\\CS Projects\\2014-2015\\";
@@ -160,7 +160,7 @@ public class AutoCompiler {
 
 		System.out.println("\targ3: -u or -U for undoing the last run before running\n");
 
-		System.out.println("\ti.e. java AutoCompiler -a -1\n");
+		System.out.println("\ti.e. java AutoGrader -a -1\n");
 	}
 	/**
 	 * Runs javac on the file passed and outputs to a file log.txt.
