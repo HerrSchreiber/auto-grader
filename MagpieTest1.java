@@ -47,7 +47,8 @@ public class MagpieTest1 {
                 tester.keywords[4] = "    ";
                 i = 5;
             }
-            else if(temp.toLowerCase().indexOf("response") >= 0) {
+            else if(temp.toLowerCase().indexOf("response") >= 0
+                    && temp.toLowerCase().indexOf("rand") >=0) {
                 String[] tempArray = new String[i];
                 for (int j = 0; j < i; j++) {
                     tempArray[j] = tester.keywords[j];
@@ -112,7 +113,6 @@ public class MagpieTest1 {
         }
         for (int i = 0; i < responses.length; i++) {
             if(!responseFound[i]) success = false;
-            //System.out.println(responses[i] + "\t\t\t" + (responseFound[i]?"found":"not found"));
             System.out.printf("%-46s\t%s\n", responses[i], (responseFound[i] ? "   FOUND" : "***NOT FOUND***"));
         }
         return success;
