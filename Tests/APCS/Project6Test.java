@@ -2,10 +2,10 @@ import java.util.*;
 import java.io.*;
 
 /**
- * Tests Project 5 - Intro to Magpie
+ * Tests Project 6 - Better Magpie
  * @author Rob Schreiber
  */
-public class MagpieTest1 {
+public class Project6Test {
     private int passes = 0;
     private int failures = 0;
     private int total = 0;
@@ -20,7 +20,7 @@ public class MagpieTest1 {
      * @param args Not used
      */
     public static void main(String[] args) {
-    	MagpieTest1 tester = new MagpieTest1(); //to avoid every method being static
+    	Project6Test tester = new Project6Test(); //to avoid every method being static
     	Scanner fileInput = null;
         try {
         	fileInput = new Scanner(new File("README.TXT"));

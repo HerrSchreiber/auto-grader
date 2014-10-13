@@ -1,11 +1,11 @@
-public class LineAndPointTest {
+public class Project2Test {
 	private int passes = 0;
 	private int failures = 0;
 	private int total = 0;
 	private static final double TOLERANCE = Math.pow(10, -1);
 
 	public static void main(String[] args) {
-		LineAndPointTest tester = new LineAndPointTest(); //to avoid every method being static
+		Project2Test tester = new Project2Test(); //to avoid every method being static
 		tester.runTests();
 	}
 	

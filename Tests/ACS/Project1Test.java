@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
  * Console app to test GridMonitor class. Needs tests for more than one input scenario.
  * @author mvail
  */
-public class LegitGridMonitorTest {
+public class Project1Test {
 	private int passes = 0;
 	private int failures = 0;
 	private int total = 0;
@@ -13,7 +13,7 @@ public class LegitGridMonitorTest {
 
 	/** @param args not used */
 	public static void main(String[] args) {
-		LegitGridMonitorTest tester = new LegitGridMonitorTest(); //to avoid every method being static
+		Project1Test tester = new Project1Test(); //to avoid every method being static
 		tester.runTests();
 	}
 	
