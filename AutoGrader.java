@@ -9,7 +9,7 @@ import java.util.*;
 public class AutoGrader {
 	private static enum classes {AP_COMPUTER_SCIENCE, ADVANCED_COMPUTER_SCIENCE};
 	private static classes classType;
-	private static String projectRoot = "C:\\Users\\schrer56\\google drive\\CS Projects\\2014-2015\\";
+	private static String projectRoot;
 	private static int projectNum;
 	private static File output;
 	private static ArrayList<Student> students = new ArrayList<Student>();
@@ -40,6 +40,8 @@ public class AutoGrader {
 			printUsage();
 			System.exit(1);
 		}
+		if (System.getProperty("user.home").indexOf("Rob") >= 0) projectRoot = "C:\\Users\\Work\\google drive\\CS Projects\\2014-2015\\"; //Sorry if anybody else named Rob uses this
+		else projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2014-2015\\";
 		if (args.length >= 3)
 			testFile = new File(args[2]);
 		switch (classType) {
@@ -51,7 +53,7 @@ public class AutoGrader {
 		}
 		projectRoot += "Project " + projectNum + "\\";
 		if (args.length == 4 && "-u".equals(args[3].toLowerCase())) uncompile(projectRoot);
-		walkAndCompile();
+		walkAndMakeDirectories();
 		Collections.sort(students);
 		for (Student s : students) {
 			System.out.println(s);
@@ -74,7 +76,7 @@ public class AutoGrader {
 	 * Recursively runs through the project root and creates student objects
 	 * for each folder.
 	 */
-	public static void walkAndCompile() {
+	public static void walkAndMakeDirectories() {
 		File root = new File(projectRoot);
 		File[] list = root.listFiles();
 
@@ -95,7 +97,7 @@ public class AutoGrader {
             }
 	}
 	/**
-	 * Helper method that actually recursively compiles things and logs
+	 * Helper method that recursively compiles things and logs
 	 * the results in the current student object.
 	 * 
 	 * @param path The recursive path that this iteration is at.
@@ -236,8 +238,8 @@ public class AutoGrader {
 		private String grade = "";
 		public Student (int p, String n) {
 			period = p;
-			if (n.equals("LonghurstHay")) name = "PickardHay";
-			else if (n.equals("LonghurstHayLate")) name = "PickardHayLate";
+			if (n.equals("LonghurstHay")) name = "PickardHay";				//different name in gradebook
+			else if (n.equals("LonghurstHayLate")) name = "PickardHayLate"; //add late before project# for late projects
 			else name = n;
 		}
 		public String toString() {
