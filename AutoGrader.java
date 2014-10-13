@@ -53,7 +53,7 @@ public class AutoGrader {
 		}
 		projectRoot += "Project " + projectNum + "\\";
 		if (args.length == 4 && "-u".equals(args[3].toLowerCase())) uncompile(projectRoot);
-		walkAndMakeDirectories();
+		walkAndMakeStudents();
 		Collections.sort(students);
 		for (Student s : students) {
 			System.out.println(s);
@@ -76,7 +76,7 @@ public class AutoGrader {
 	 * Recursively runs through the project root and creates student objects
 	 * for each folder.
 	 */
-	public static void walkAndMakeDirectories() {
+	public static void walkAndMakeStudents() {
 		File root = new File(projectRoot);
 		File[] list = root.listFiles();
 
@@ -234,7 +234,7 @@ public class AutoGrader {
 	private static class Student implements Comparable<Student> {
 		private int period;
 		private String name;
-		private String description = "\n";
+		private Stack<String> description = new Stack<String>();
 		private String grade = "";
 		public Student (int p, String n) {
 			period = p;
@@ -243,11 +243,12 @@ public class AutoGrader {
 			else name = n;
 		}
 		public String toString() {
-			return name + ":\n\n" + description;
+			String result = "";
+			for (String s : description) result += s;
+			return name + ":\n\n" + result;
 		}
 		public void addDescription (String newDescription) {
-			if (description.equals("\n")) description += newDescription;
-			else description += "\n" + newDescription;
+			description.push(newDescription);
 		}
 		public void grade(String g) {
 			grade = g;
