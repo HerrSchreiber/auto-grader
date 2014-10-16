@@ -61,6 +61,138 @@ public class Project2Test {
 		}
 		return success;
 	}
+
+	private boolean EmptyStackTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean OneElementStackTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean MultiElementStackTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean EmptyQueueTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean OneElementQueueTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean MultiElementQueueTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean pushMiniTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean popMiniTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean peekMiniTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean enqueueMiniTest() {
+		boolean success = true;
+
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean dequeueMiniTest() {
+		boolean success = true;
+
+		try {
+
+		}	 catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}	
+		return success;
+	}
 	
 	////////////////////////////////
 	// utility methods for testing
