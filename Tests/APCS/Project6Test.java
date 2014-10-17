@@ -93,6 +93,8 @@ public class Project6Test {
             printTest(k + " test", !contains(responses, m.getResponse(k)));
         }
         printTest("randomResponsesTest", randomResponsesTest());
+        printTest("iWantResponseTest", iWantResponseTest());
+        printTest("iYouResponseTest", iYouResponseTest());
         /////////////////
         //final verdict
         /////////////////
@@ -105,18 +107,50 @@ public class Project6Test {
      */
     private boolean randomResponsesTest() {
         boolean success = true;
-        Magpie m = new Magpie();
-        boolean[] responseFound = new boolean[responses.length];
-        for(int i = 0; i < responses.length * 10; i++) {
-            String response = m.getResponse("fdafdsafdsa");
-            responseFound[Arrays.binarySearch(responses, response)] = true;
-        }
-        for (int i = 0; i < responses.length; i++) {
-            if(!responseFound[i]) success = false;
-            System.out.printf("%-46s\t%s\n", responses[i], (responseFound[i] ? "   FOUND" : "***NOT FOUND***"));
+        try {
+            Magpie m = new Magpie();
+            boolean[] responseFound = new boolean[responses.length];
+            for(int i = 0; i < responses.length * 10; i++) {
+                String response = m.getResponse("fdafdsafdsa");
+                responseFound[Arrays.binarySearch(responses, response)] = true;
+            }
+            for (int i = 0; i < responses.length; i++) {
+                if(!responseFound[i]) success = false;
+                System.out.printf("%-46s\t%s\n", responses[i], (responseFound[i] ? "   FOUND" : "***NOT FOUND***"));
+            }
+        } catch (Exception e) {
+            success = false;
+            e.printStackTrace();
         }
         return success;
     }
+
+    private boolean iWantResponseTest() {
+        boolean success = true;
+        try {
+            Magpie m = new Magpie();
+            System.out.println(m.getResponse("I want pie"));
+            success = "Would you really be happy if you had pie?".equals(m.getResponse("I want pie"));
+        } catch (Exception e) {
+            success = false;
+            e.printStackTrace();
+        }
+        return success;
+    }
+
+    private boolean iYouResponseTest() {
+        boolean success = true;
+        try {
+            Magpie m = new Magpie();
+            System.out.println(m.getResponse("I tolerate you"));
+            success = "Why do you tolerate me?".equals(m.getResponse("I tolerate you"));
+        } catch (Exception e) {
+            success = false;
+            e.printStackTrace();
+        }
+        return success;
+    }
+
 
     ////////////////////////////////
     // utility methods for testing
