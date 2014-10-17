@@ -23,7 +23,7 @@ public class AutoGrader {
 	 */
 	public static void main(String[] args) {
 		System.out.println();
-		if (args.length < 2 || args.length > 4) {
+		if (args.length != 2) {
 			printUsage();
 			System.exit(1);
 		}
@@ -42,8 +42,19 @@ public class AutoGrader {
 		}
 		if (System.getProperty("user.home").indexOf("Rob") >= 0) projectRoot = "C:\\Users\\Work\\google drive\\CS Projects\\2014-2015\\"; //Sorry if anybody else named Rob uses this
 		else projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2014-2015\\";
-		if (args.length >= 3)
-			testFile = new File(args[2]);
+		/*if (args.length >= 3)
+			testFile = new File(args[2]);*/
+		String testFilePath = "Tests\\";
+		switch (classType) {
+			case AP_COMPUTER_SCIENCE:
+				testFilePath += "APCS\\";
+				break;
+			case ADVANCED_COMPUTER_SCIENCE:
+				testFilePath += "ACS\\";
+
+		}
+		testFilePath += "Project" + projectNum + "Test.java";
+		testFile = new File(testFilePath);
 		switch (classType) {
 			case AP_COMPUTER_SCIENCE:
 				projectRoot += "AP Computer Science\\";
@@ -52,7 +63,7 @@ public class AutoGrader {
 				projectRoot += "Advanced Computer Science\\";
 		}
 		projectRoot += "Project " + projectNum + "\\";
-		if (args.length == 4 && "-u".equals(args[3].toLowerCase())) uncompile(projectRoot);
+		/*if (args.length == 4 && "-u".equals(args[3].toLowerCase())) */uncompile(projectRoot);
 		walkAndMakeStudents();
 		Collections.sort(students);
 		for (Student s : students) {
@@ -157,10 +168,6 @@ public class AutoGrader {
 		System.out.println("\t      -g or -G for Advanced Computer Science.\n");
 
 		System.out.println("\targ1: -# where # is the number of the project.\n");
-
-		System.out.println("\targ2: filename of the tester file.\n");
-
-		System.out.println("\targ3: -u or -U for undoing the last run before running\n");
 
 		System.out.println("\ti.e. java AutoGrader -a -1\n");
 	}
