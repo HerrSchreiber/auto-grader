@@ -251,7 +251,9 @@ public class AutoGrader {
 		}
 		public String toString() {
 			String result = "";
-			for (String s : description) result += s;
+			try {	
+				while(true) { result += description.pop(); }
+			} catch (EmptyStackException e) {}
 			return name + ":\n\n" + result;
 		}
 		public void addDescription (String newDescription) {
