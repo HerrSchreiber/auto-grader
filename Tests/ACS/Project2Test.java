@@ -82,18 +82,19 @@ public class Project2Test {
 			double timeStart = System.nanoTime();
 			for (int i = 0; i < 1000; i++) {
 				st.push(i);
-				st.pop(i);
+				st.pop();
 			}
 			double thousandTime = System.nanoTime() - timeStart;
 			timeStart = System.nanoTime();
 			for (int i = 0; i < 10000; i++) {
 				st.push(i);
-				st.pop(i);
+				st.pop();
 			}
 			double tenKTime = System.nanoTime() - timeStart;
 			double thousandTimePerOp = thousandTime / 1000;
 			double tenKTimePerOp = tenKTime / 10000;
-			success = Math.abs((thousandTimePerOp / tenKTimePerOp) - 1) < 0.1;
+			System.out.println(thousandTimePerOp + ", " + tenKTimePerOp);	
+			success = Math.abs((thousandTimePerOp / tenKTimePerOp) - 1) < 9;
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			success = false;
@@ -111,18 +112,19 @@ public class Project2Test {
 			double timeStart = System.nanoTime();
 			for (int i = 0; i < 1000; i++) {
 				q.enqueue(i);
-				q.dequeue(i);
+				q.dequeue();
 			}
 			double thousandTime = System.nanoTime() - timeStart;
 			timeStart = System.nanoTime();
 			for (int i = 0; i < 10000; i++) {
 				q.enqueue(i);
-				q.dequeue(i);
+				q.dequeue();
 			}
 			double tenKTime = System.nanoTime() - timeStart;
 			double thousandTimePerOp = thousandTime / 1000;
 			double tenKTimePerOp = tenKTime / 10000;
-			success = Math.abs((thousandTimePerOp / tenKTimePerOp) - 1) < 0.1;
+			System.out.println(thousandTimePerOp + ", " + tenKTimePerOp);	
+			success = Math.abs((thousandTimePerOp / tenKTimePerOp) - 1) < 3;
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			success = false;
@@ -136,9 +138,9 @@ public class Project2Test {
 
 		try {
 			SLLStack<String> st = new SLLStack<String>();
-			printTest("pushMiniTest", pushMiniTest(st, "A", "A"));
-			printTest("popMiniTest", popMiniTest(st, null, true));
-			printTest("peekMiniTest", peekMiniTest(st, null, true));
+			printTest("\tpushMiniTest", pushMiniTest(st, "A", "A"));
+			printTest("\tpopMiniTest", popMiniTest(st, null, true));
+			printTest("\tpeekMiniTest", peekMiniTest(st, null, true));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
@@ -154,9 +156,10 @@ public class Project2Test {
 		try {
 			SLLStack<String> st = new SLLStack<String>();
 			st.push("A");
-			printTest("pushMiniTest", pushMiniTest(st, "B", "B"));
-			printTest("popMiniTest", popMiniTest(st, "A", false));
-			printTest("peekMiniTest", peekMiniTest(st, "A", false));
+			printTest("\tpushMiniTest", pushMiniTest(st, "B", "B"));
+			printTest("\tpopMiniTest", popMiniTest(st, "A", false));
+			st.push("A");
+			printTest("\tpeekMiniTest", peekMiniTest(st, "A", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
@@ -174,9 +177,10 @@ public class Project2Test {
 			st.push("A");
 			st.push("B");
 			st.push("C");
-			printTest("pushMiniTest", pushMiniTest(st, "D", "D"));
-			printTest("popMiniTest", popMiniTest(st, "C", false));
-			printTest("peekMiniTest", peekMiniTest(st, "C", false));
+			printTest("\tpushMiniTest", pushMiniTest(st, "D", "D"));
+			printTest("\tpopMiniTest", popMiniTest(st, "C", false));
+			st.push("C");
+			printTest("\tpeekMiniTest", peekMiniTest(st, "C", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
@@ -191,8 +195,8 @@ public class Project2Test {
 
 		try {
 			ArrayQueue<String> q = new ArrayQueue<String>();
-			printTest("enqueueMiniTest", enqueueMiniTest(q, "A", "A"));
-			printTest("dequeueMiniTest", dequeueMiniTest(q, null, true));
+			printTest("\tenqueueMiniTest", enqueueMiniTest(q, "A", "A"));
+			printTest("\tdequeueMiniTest", dequeueMiniTest(q, null, true));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
@@ -208,8 +212,8 @@ public class Project2Test {
 		try {
 			ArrayQueue<String> q = new ArrayQueue<String>();
 			q.enqueue("A");
-			printTest("enqueueMiniTest", enqueueMiniTest(q, "B", "A"));
-			printTest("dequeueMiniTest", dequeueMiniTest(q, "A", false));
+			printTest("\tenqueueMiniTest", enqueueMiniTest(q, "B", "A"));
+			printTest("\tdequeueMiniTest", dequeueMiniTest(q, "A", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
@@ -227,8 +231,8 @@ public class Project2Test {
 			q.enqueue("A");
 			q.enqueue("B");
 			q.enqueue("C");
-			printTest("enqueueMiniTest", enqueueMiniTest(q, "D", "A"));
-			printTest("dequeueMiniTest", dequeueMiniTest(q, "A", false));
+			printTest("\tenqueueMiniTest", enqueueMiniTest(q, "D", "A"));
+			printTest("\tdequeueMiniTest", dequeueMiniTest(q, "A", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
