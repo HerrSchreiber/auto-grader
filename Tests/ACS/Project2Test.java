@@ -1,4 +1,5 @@
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.util.*;
 
 /**
  * Console app to test GridMonitor class. Needs tests for more than one input scenario.
@@ -8,6 +9,7 @@ public class Project2Test {
 	private int passes = 0;
 	private int failures = 0;
 	private int total = 0;
+	private boolean sectionPass;
 	
 	private static final double TOLERANCE = Math.pow(10, -14);
 
@@ -23,8 +25,16 @@ public class Project2Test {
 		// run tests on all interface methods to confirm correct results
 		// and behavior under normal and exceptional use cases
 		//////////////////////////////////////////////////////////////////
-		printTest("ArrayQueueInterfaceTest", ArrayQueueInterfaceTest());
 		printTest("SLLStackInterfaceTest", SLLStackInterfaceTest());
+		printTest("ArrayQueueInterfaceTest", ArrayQueueInterfaceTest());
+		printTest("SLLStackBigOTest", SLLStackBigOTest());
+		printTest("ArrayQueueBigOTest", ArrayQueueBigOTest());
+		printTest("EmptyStackTest", EmptyStackTest());
+		printTest("OneElementStackTest", OneElementStackTest());
+		printTest("MultiElementStackTest", MultiElementStackTest());
+		printTest("EmptyQueueTest", EmptyQueueTest());
+		printTest("OneElementQueueTest", OneElementQueueTest());
+		printTest("MultiElementQueueTest", MultiElementQueueTest());
 
 		
 		
@@ -34,20 +44,6 @@ public class Project2Test {
 		printFinalSummary();
 	}
 		
-	/** Confirm that ArrayQueue implements ArrayQueueInterface */
-	private boolean ArrayQueueInterfaceTest() {
-		boolean success = true;
-		
-		try {
-			ArrayQueue aq = new ArrayQueue();
-			if (! (aq instanceof ArrayQueueInterface)) success = false;
-		} catch (Exception e) {
-			e.printStackTrace(System.out);
-			success = false;
-		}
-		return success;
-	}
-
 	/** Confirm that SLLStack implements SLLStackInterface */
 	private boolean SLLStackInterfaceTest() {
 		boolean success = true;
@@ -62,135 +58,266 @@ public class Project2Test {
 		return success;
 	}
 
+	/** Confirm that ArrayQueue implements ArrayQueueInterface */
+	private boolean ArrayQueueInterfaceTest() {
+		boolean success = true;
+		
+		try {
+			ArrayQueue aq = new ArrayQueue();
+			if (! (aq instanceof ArrayQueueInterface)) success = false;
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+			success = false;
+		}
+		return success;
+	}
+    
+    /**
+     * Confirms SLLStack operates at constant time
+     */
+	private boolean SLLStackBigOTest() {
+		boolean success = true;
+		try {
+			SLLStack<Integer> st = new SLLStack<Integer>();
+			double timeStart = System.nanoTime();
+			for (int i = 0; i < 1000; i++) {
+				st.push(i);
+				st.pop(i);
+			}
+			double thousandTime = System.nanoTime() - timeStart;
+			timeStart = System.nanoTime();
+			for (int i = 0; i < 10000; i++) {
+				st.push(i);
+				st.pop(i);
+			}
+			double tenKTime = System.nanoTime() - timeStart;
+			double thousandTimePerOp = thousandTime / 1000;
+			double tenKTimePerOp = tenKTime / 10000;
+			success = Math.abs((thousandTimePerOp / tenKTimePerOp) - 1) < 0.1;
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+			success = false;
+		}
+		return success;
+	}
+    
+    /**
+     * Confirms ArrayQueue operates at constant time
+     */
+	private boolean ArrayQueueBigOTest() {
+		boolean success = true;
+		try {
+			ArrayQueue<Integer> q = new ArrayQueue<Integer>();
+			double timeStart = System.nanoTime();
+			for (int i = 0; i < 1000; i++) {
+				q.enqueue(i);
+				q.dequeue(i);
+			}
+			double thousandTime = System.nanoTime() - timeStart;
+			timeStart = System.nanoTime();
+			for (int i = 0; i < 10000; i++) {
+				q.enqueue(i);
+				q.dequeue(i);
+			}
+			double tenKTime = System.nanoTime() - timeStart;
+			double thousandTimePerOp = thousandTime / 1000;
+			double tenKTimePerOp = tenKTime / 10000;
+			success = Math.abs((thousandTimePerOp / tenKTimePerOp) - 1) < 0.1;
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+			success = false;
+		}
+		return success;
+	}
+
 	private boolean EmptyStackTest() {
 		boolean success = true;
+		sectionPass = true;
 
 		try {
-
+			SLLStack<String> st = new SLLStack<String>();
+			printTest("pushMiniTest", pushMiniTest(st, "A", "A"));
+			printTest("popMiniTest", popMiniTest(st, null, true));
+			printTest("peekMiniTest", peekMiniTest(st, null, true));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
 		}
+		success = sectionPass;
 		return success;
 	}
 
 	private boolean OneElementStackTest() {
 		boolean success = true;
+		sectionPass = true;
 
 		try {
-
+			SLLStack<String> st = new SLLStack<String>();
+			st.push("A");
+			printTest("pushMiniTest", pushMiniTest(st, "B", "B"));
+			printTest("popMiniTest", popMiniTest(st, "A", false));
+			printTest("peekMiniTest", peekMiniTest(st, "A", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
 		}
+		success = sectionPass;
 		return success;
 	}
 
 	private boolean MultiElementStackTest() {
 		boolean success = true;
+		sectionPass = true;
 
 		try {
-
+			SLLStack<String> st = new SLLStack<String>();
+			st.push("A");
+			st.push("B");
+			st.push("C");
+			printTest("pushMiniTest", pushMiniTest(st, "D", "D"));
+			printTest("popMiniTest", popMiniTest(st, "C", false));
+			printTest("peekMiniTest", peekMiniTest(st, "C", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
 		}
+		success = sectionPass;
 		return success;
 	}
 
 	private boolean EmptyQueueTest() {
 		boolean success = true;
+		sectionPass = true;
 
 		try {
-
+			ArrayQueue<String> q = new ArrayQueue<String>();
+			printTest("enqueueMiniTest", enqueueMiniTest(q, "A", "A"));
+			printTest("dequeueMiniTest", dequeueMiniTest(q, null, true));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
 		}
+		success = sectionPass;
 		return success;
 	}
 
 	private boolean OneElementQueueTest() {
 		boolean success = true;
+		sectionPass = true;
 
 		try {
-
+			ArrayQueue<String> q = new ArrayQueue<String>();
+			q.enqueue("A");
+			printTest("enqueueMiniTest", enqueueMiniTest(q, "B", "A"));
+			printTest("dequeueMiniTest", dequeueMiniTest(q, "A", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
 		}
+		success = sectionPass;
 		return success;
 	}
 
 	private boolean MultiElementQueueTest() {
 		boolean success = true;
+		sectionPass = true;
 
 		try {
-
+			ArrayQueue<String> q = new ArrayQueue<String>();
+			q.enqueue("A");
+			q.enqueue("B");
+			q.enqueue("C");
+			printTest("enqueueMiniTest", enqueueMiniTest(q, "D", "A"));
+			printTest("dequeueMiniTest", dequeueMiniTest(q, "A", false));
 		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+		}
+		success = sectionPass;
+		return success;
+	}
+
+	private boolean pushMiniTest(SLLStack<String> st, String toAdd, String expected) {
+		boolean success = true;
+
+		try {
+			st.push(toAdd);
+			success = expected.equals(st.pop());
+			if (!success) sectionPass = false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			success = false;
+			sectionPass = false;
+		}
+		return success;
+	}
+
+	private boolean popMiniTest(SLLStack st, String expected, boolean error) {
+		boolean success = false;
+
+		try {
+			success = st.pop().equals(expected);
+			if (!success) sectionPass = false;
+		}
+		catch (NoSuchElementException e) {
+			if (error) success = true;
+			else sectionPass = false;
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			success = false;
 		}
 		return success;
 	}
 
-	private boolean pushMiniTest() {
-		boolean success = true;
+	private boolean peekMiniTest(SLLStack st, String expected, boolean error) {
+		boolean success = false;
 
 		try {
-
-		} catch (Exception e) {
+			success = st.peek().equals(expected);
+			if (!success) sectionPass = false;
+		}
+		catch (NoSuchElementException e) {
+			if (error) success = true;
+			else sectionPass = false;
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			success = false;
 		}
 		return success;
 	}
 
-	private boolean popMiniTest() {
+	private boolean enqueueMiniTest(ArrayQueue<String> q, String toAdd, String expected) {
 		boolean success = true;
 
 		try {
-
+			q.enqueue(toAdd);
+			success = expected.equals(q.dequeue());
+			if (!success) sectionPass = false;
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
+			sectionPass = false;
 		}
 		return success;
 	}
 
-	private boolean peekMiniTest() {
-		boolean success = true;
+	private boolean dequeueMiniTest(ArrayQueue<String> q, String expected, boolean error) {
+		boolean success = false;
 
 		try {
-
-		} catch (Exception e) {
+			success = q.dequeue().equals(expected);
+			if (!success) sectionPass = false;
+		}
+		catch (NoSuchElementException e) {
+			if (error) success = true;
+			else sectionPass = false;
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			success = false;
 		}
-		return success;
-	}
-
-	private boolean enqueueMiniTest() {
-		boolean success = true;
-
-		try {
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			success = false;
-		}
-		return success;
-	}
-
-	private boolean dequeueMiniTest() {
-		boolean success = true;
-
-		try {
-
-		}	 catch (Exception e) {
-			e.printStackTrace();
-			success = false;
-		}	
 		return success;
 	}
 	
