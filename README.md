@@ -9,9 +9,5 @@ In order to use this program, use the following arguments:
 		      -g or -G for Advanced Computer Science.
 
 		arg1: -# where # is the number of the project.
-
-		arg2: filename of the tester file.
-
-		arg3: -u or -U for undoing the last run before running
-
-		i.e. java AutoGrader -a -2 LineAndPointTest.java -u
+		
+		i.e. java AutoGrader -a -2
