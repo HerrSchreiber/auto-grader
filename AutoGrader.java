@@ -96,7 +96,7 @@ public class AutoGrader {
             for ( File f : list ) {
                 if ( f.isDirectory() ) {
                 	int per = Integer.parseInt(f.getName().substring(0,1));
-                	String name = f.getName().substring(1, f.getName().length() - 8);
+                	String name = f.getName().substring(1, f.getName().indexOf("Project"));
                 	tempStudent = new Student(per, name);
                 	students.add(tempStudent);
                     walkAndCompile( f.getAbsolutePath() );
