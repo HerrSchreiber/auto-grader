@@ -31,7 +31,7 @@ public class Project10Test {
         //////////////////////////////////////////////////////////////////
 
         printTest("staffMemberAbstractTest", staffMemberAbstractTest());
-        printTest("staffMemberSuperclassTest", staffMemberAbstractTest());
+        printTest("staffMemberSuperclassTest", staffMemberSuperclassTest());
         printTest("employeeSuperclassTest", employeeSuperclassTest());
         printTest("internPayTest", internPayTest());
         printTest("employeePayTest", employeePayTest());
