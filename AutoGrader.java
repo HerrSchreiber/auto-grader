@@ -63,7 +63,7 @@ public class AutoGrader {
 				projectRoot += "Advanced Computer Science\\";
 		}
 		projectRoot += "Project " + projectNum + "\\";
-		/*if (args.length == 4 && "-u".equals(args[3].toLowerCase())) */uncompile(projectRoot);
+		uncompile(projectRoot);
 		walkAndMakeStudents();
 		Collections.sort(students);
 		for (Student s : students) {
@@ -96,15 +96,17 @@ public class AutoGrader {
             for ( File f : list ) {
                 if ( f.isDirectory() ) {
                 	int per = Integer.parseInt(f.getName().substring(0,1));
+                	if (f.getName().indexOf("Project") == -1) {
+                		System.out.println("invalid directory name: " + f.getName());
+                		System.exit(1);
+                	}
                 	String name = f.getName().substring(1, f.getName().indexOf("Project"));
                 	tempStudent = new Student(per, name);
                 	students.add(tempStudent);
                     walkAndCompile( f.getAbsolutePath() );
-                    //System.out.println( "Dir:" + f.getName() );
+                    
                 }
-                /*else {
-                    System.out.println( "File:" + f.getAbsoluteFile() );
-                }*/
+                
             }
 	}
 	/**
