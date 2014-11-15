@@ -171,7 +171,7 @@ public class Project8Test {
         try {
            Ed c = new Editor2("hi", "there");
            c = c.endKey();
-           if (!c.getFirst().equals("hithere") || c.getRest().equals("")) {
+           if (!c.getFirst().equals("hithere") || !c.getRest().equals("")) {
                 success = false;
            }
         } catch (Exception e) {
