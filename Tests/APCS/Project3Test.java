@@ -2,7 +2,7 @@ public class Project3Test {
     private int passes = 0;
     private int failures = 0;
     private int total = 0;
-    private static final double TOLERANCE = Math.pow(10, -1);
+    private static final double TOLERANCE = 1E-3;
 
     public static void main(String[] args) {
         Project3Test tester = new Project3Test(); //to avoid every method being static

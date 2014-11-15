@@ -9,7 +9,7 @@ public class Project8Test {
     private int passes = 0;
     private int failures = 0;
     private int total = 0;
-    private static final double TOLERANCE = Math.pow(10, -1);
+    private static final double TOLERANCE = 1E-3;
     private String[] keywords = new String[100];
     private String[] responses = new String[100];
 
