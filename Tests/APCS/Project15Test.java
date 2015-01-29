@@ -33,6 +33,7 @@ public class Project15Test {
         printTest("cardConstructorTest", cardConstructorTest());
         printTest("cardMatchTest", cardMatchTest());
         printTest("cardToStringTest", cardToStringTest());
+        printTest("deckConstructorTest", deckConstructorTest());
 
         
     }
