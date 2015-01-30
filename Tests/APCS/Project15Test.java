@@ -123,10 +123,10 @@ public class Project15Test {
             String[] suits = {"red", "blue"};
             int[] points = {2, 4};
             Deck deck = new Deck(ranks, suits, points); 
-            for (int i = 0; i < deck.size(); i++) {
+            for (int i = deck.size(); i > 0; i--) {
                 deck.deal();
             }
-            if(!isEmpty()) success = false;
+            if(!deck.isEmpty()) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -142,7 +142,7 @@ public class Project15Test {
             String[] suits = {"red", "blue"};
             int[] points = {2, 4};
             Deck deck = new Deck(ranks, suits, points); 
-    	    for(int i = ranks.length*suits.length; i > 0; i++) {
+    	    for(int i = ranks.length*suits.length; i > 0; i--) {
     	        if(i != deck.size()) success = false;
                 deck.deal();
     	    }
@@ -164,10 +164,13 @@ public class Project15Test {
             int[] points = {2, 4};
             Deck deck = new Deck(ranks, suits, points); 
     	    Card isThisYourCard = deck.deal();
-    	    for(int i = ranks.length*suits.length; i > 0; i++) {
-    		  deck.shuffle();
-    		  Card tempCard = deck.deal();
-    		  if (!tempCard.matches(isThisYourCard)) success = true;
+    	    for(int i = 0; i < 100; i++) {
+                deck.shuffle();
+                Card tempCard = deck.deal();
+                if (!tempCard.matches(isThisYourCard)) {
+                    success = true;
+                    break;
+                }
 	        }
         } catch (Exception e) {
             e.printStackTrace(System.out);
