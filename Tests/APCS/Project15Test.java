@@ -34,7 +34,9 @@ public class Project15Test {
         printTest("cardMatchTest", cardMatchTest());
         printTest("cardToStringTest", cardToStringTest());
         printTest("deckConstructorTest", deckConstructorTest());
-
+	printTest("deckEmptyTest", deckEmptyTest());
+	printTest("deckSizeTest", deckSizeTest());
+	printTest("deckShuffleTest", deckShuffleTest());
         
     }
 
@@ -103,7 +105,7 @@ public class Project15Test {
                         if (tempCard.matches(new Card(r, s, Integer.parseInt(r) * 2))) loopSuccess = true;
                     }
                     if (!loopSuccess) success = false;
-                    if (!deck.isEmpty()) success = false;
+                
                 }
             }
         } catch (Exception e) {
@@ -112,15 +114,19 @@ public class Project15Test {
         }
         return success;
     }
-
-    private boolean rationalNumberSubtractMixedNumberTest() {
+    
+    private boolean deckEmptyTest() {
         boolean success = true;
         
         try {
-            RationalNumber r1 = new RationalNumber(22, 7);
-            MixedNumber r2 = new MixedNumber(0, 14, 14);
-            RationalNumber result = r1.subtract(r2);
-            if (result.getNumerator() != 15 || result.getDenominator() != 7) success = false;
+            String[] ranks = {"1", "2"};
+            String[] suits = {"red", "blue"};
+            int[] points = {2, 4};
+            Deck deck = new Deck(ranks, suits, points); 
+            for (int i = 0; i < deck.size(); i++) {
+                deck.deal();
+            }
+            if(!isEmpty()) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -128,90 +134,19 @@ public class Project15Test {
         return success;
     }
 
-    private boolean rationalNumberMultiplyRationalNumberTest() {
+    private boolean deckSizeTest() {
         boolean success = true;
         
         try {
-            RationalNumber r1 = new RationalNumber(22, 7);
-            RationalNumber r2 = new RationalNumber(14, 14);
-            RationalNumber result = r1.multiply(r2);
-            if (result.getNumerator() != 22 || result.getDenominator() != 7) success = false;
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            success = false;
-        }
-        return success;
-    }
-
-    private boolean rationalNumberMultiplyMixedNumberTest() {
-        boolean success = true;
-        
-        try {
-            RationalNumber r1 = new RationalNumber(22, 7);
-            MixedNumber r2 = new MixedNumber(0, 14, 14);
-            RationalNumber result = r1.multiply(r2);
-            if (result.getNumerator() != 22 || result.getDenominator() != 7) success = false;
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            success = false;
-        }
-        return success;
-    }
-
-    private boolean rationalNumberDivideRationalNumberTest() {
-        boolean success = true;
-        
-        try {
-            RationalNumber r1 = new RationalNumber(22, 7);
-            RationalNumber r2 = new RationalNumber(14, 14);
-            RationalNumber result = r1.divide(r2);
-            if (result.getNumerator() != 22 || result.getDenominator() != 7) success = false;
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            success = false;
-        }
-        return success;
-    }
-
-    private boolean rationalNumberDivideMixedNumberTest() {
-        boolean success = true;
-        
-        try {
-            RationalNumber r1 = new RationalNumber(22, 7);
-            MixedNumber r2 = new MixedNumber(0, 14, 14);
-            RationalNumber result = r1.divide(r2);
-            if (result.getNumerator() != 22 || result.getDenominator() != 7) success = false;
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            success = false;
-        }
-        return success;
-    }
-
-    private boolean rationalNumberConvertToMixedTest() {
-        boolean success = true;
-        
-        try {
-            RationalNumber r1 = new RationalNumber(22, 7);
-            MixedNumber actualValue = r1.convertToMixed();
-            MixedNumber expectedValue = new MixedNumber(3, 1, 7);
-            if (expectedValue.getWhole() != actualValue.getWhole() || expectedValue.getNumerator() != actualValue.getNumerator() || expectedValue.getDenominator() != actualValue.getDenominator()) success = false;
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            success = false;
-        }
-        return success;
-    }
-
-    private boolean rationalNumberToStringTest() {
-        boolean success = true;
-        
-        try {
-            RationalNumber r1 = new RationalNumber(22, 7);
-            String actualValue = r1.toString();
-            String expectedValue1 = "22/7";
-            String expectedValue2 = "22 / 7";
-            if (!expectedValue1.equals(actualValue) && !expectedValue2.equals(actualValue)) success = false;
+            String[] ranks = {"1", "2"};
+            String[] suits = {"red", "blue"};
+            int[] points = {2, 4};
+            Deck deck = new Deck(ranks, suits, points); 
+	    for(int i = ranks.length*suits.length; i > 0; i++) {
+	        if(i != deck.size()) success = false;
+		deck.deal();
+	    }
+	    if(0 != deck.size()) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -220,6 +155,27 @@ public class Project15Test {
     }
 
     
+    private boolean deckShuffleTest() {
+        boolean success = false;
+        
+        try {
+            String[] ranks = {"1", "2"};
+            String[] suits = {"red", "blue"};
+            int[] points = {2, 4};
+            Deck deck = new Deck(ranks, suits, points); 
+	    Card isThisYourCard = deck.deal();
+	    for(int i = ranks.length*suits.length; i > 0; i++) {
+		deck.shuffle();
+		Card tempCard = deck.deal();
+		if (!tempCard.matches(isThisYourCard)) success = true;
+	    }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            success = false;
+        }
+        return success;
+    }
+
 
     ////////////////////////////////
     // utility methods for testing
