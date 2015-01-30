@@ -103,6 +103,7 @@ public class AutoGrader {
                 	String name = f.getName().substring(1, f.getName().indexOf("Project"));
                 	tempStudent = new Student(per, name);
                 	students.add(tempStudent);
+                	System.out.println("Testing " + tempStudent.getName() + "...");
                     walkAndCompile( f.getAbsolutePath() );
                     
                 }
