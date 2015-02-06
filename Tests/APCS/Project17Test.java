@@ -46,7 +46,6 @@ public class Project17Test {
             gl.add("blorgons");
             gl.add("inspector");
             gl.add("spacetime");
-            System.out.println(gl);
             if (gl.toString().contains("blorgons") != true) success = false;
             if (gl.toString().contains("inspector") != true) success = false;
             if (gl.toString().contains("spacetime") != true) success = false;
