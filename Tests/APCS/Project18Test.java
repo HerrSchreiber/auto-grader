@@ -158,7 +158,7 @@ public class Project18Test {
             }
 
             for (int i = 0; i < 1000; i++) {
-                if (al.get(i).intValue() != 1000 - i) success = false;
+                if (al.get(i).intValue() != 999 - i) success = false;
             }
             if (al.size() != 1000) success = false;
         } catch (Exception e) {
@@ -176,7 +176,7 @@ public class Project18Test {
             for (int i = 0; i < 100; i++) {
                 al.add(i);
             }
-            al.remove(42)
+            al.remove(42);
             for (int i = 0; i < 99; i++) {
                 if (al.get(i).intValue() == 42) success = false;
                 if (i > 41 && al.get(i).intValue() != i + 1) success = false;
