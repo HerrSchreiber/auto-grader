@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 /**
  * Program that automatically inserts a test file into all project folders and
  * compiles all the files there while keeping track of output.
@@ -143,7 +144,9 @@ public class AutoGrader {
 	                    		pb.redirectOutput(log);
 	                    		Process p = pb.start();
 	                    		try {
-	                    			p.waitFor();
+	                    			if (!p.waitFor(30, TimeUnit.SECONDS)) {
+	                    				p.destroyForcibly();
+	                    			}
 	                    		}
 	                    		catch(InterruptedException e) {
 	                    			e.printStackTrace();
