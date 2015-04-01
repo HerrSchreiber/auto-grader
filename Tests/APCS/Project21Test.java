@@ -30,7 +30,21 @@ public class Project21Test {
         // and behavior under normal and exceptional use cases
         //////////////////////////////////////////////////////////////////
         
-        
+        printTest("positiveSquareAddTest", positiveSquareAddTest());
+        printTest("negativeSquareAddTest", negativeSquareAddTest());
+        printTest("rectangleAddTest", rectangleAddTest());
+        printTest("invalidDimensionAddTest", invalidDimensionAddTest());
+        printTest("positiveSquareSubtractTest", positiveSquareSubtractTest());
+        printTest("negativeSquareSubtractTest", negativeSquareSubtractTest());
+        printTest("rectangleSubtractTest", rectangleSubtractTest());
+        printTest("invalidDimensionSubtractTest", invalidDimensionSubtractTest());
+        printTest("positiveSquareMultiplyTest", positiveSquareMultiplyTest());
+        printTest("negativeSquareMultiplyTest", negativeSquareMultiplyTest());
+        printTest("rectangleMultiplyTest", rectangleMultiplyTest());
+        printTest("invalidDimensionMultiplyTest", invalidDimensionMultiplyTest());
+        printTest("positiveDeterminantTest", positiveDeterminantTest());
+        printTest("negativeDeterminantTest", negativeDeterminantTest());
+        printTest("inverseTest", inverseTest());
         
     	
     }
@@ -113,7 +127,7 @@ public class Project21Test {
             success = false;
 
         } 
-        catch (InvalidArgumentException e) {
+        catch (IllegalArgumentException e) {
             success = true;
         }
         catch (Exception e) {
@@ -202,7 +216,7 @@ public class Project21Test {
             success = false;
 
         } 
-        catch (InvalidArgumentException e) {
+        catch (IllegalArgumentException e) {
             success = true;
         }
         catch (Exception e) {
@@ -291,7 +305,7 @@ public class Project21Test {
             success = false;
 
         } 
-        catch (InvalidArgumentException e) {
+        catch (IllegalArgumentException e) {
             success = true;
         }
         catch (Exception e) {
