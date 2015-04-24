@@ -248,7 +248,7 @@ public class Project23Test {
         try {
             SLLQueue<Integer> queue = new SLLQueue<Integer>();
             queue.enqueue(1);
-            if (queue.dequeue != 1) {
+            if (queue.dequeue() != 1) {
                 success = false;
             }
         }
@@ -257,6 +257,7 @@ public class Project23Test {
             success = false;
         }
 
+        return success;
     }
 
     private boolean oneElementQueueEnqueueTest() {
@@ -266,10 +267,10 @@ public class Project23Test {
             SLLQueue<Integer> queue = new SLLQueue<Integer>();
             queue.enqueue(1);
             queue.enqueue(2);
-            if (queue.dequeue != 1) {
+            if (queue.dequeue() != 1) {
                 success = false;
             }
-            if (queue.dequeue != 2) {
+            if (queue.dequeue() != 2) {
                 success = false;
             }
         }
@@ -277,6 +278,7 @@ public class Project23Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
 
     }
 
@@ -288,13 +290,13 @@ public class Project23Test {
             queue.enqueue(1);
             queue.enqueue(2);
             queue.enqueue(3);
-            if (queue.dequeue != 1) {
+            if (queue.dequeue() != 1) {
                 success = false;
             }
-            if (queue.dequeue != 2) {
+            if (queue.dequeue() != 2) {
                 success = false;
             }
-            if (queue.dequeue != 3) {
+            if (queue.dequeue() != 3) {
                 success = false;
             }
         }
@@ -302,6 +304,7 @@ public class Project23Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
 
     }
 
@@ -323,6 +326,7 @@ public class Project23Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
 
     }
 
@@ -355,6 +359,7 @@ public class Project23Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
 
     }
 
@@ -385,6 +390,7 @@ public class Project23Test {
             e.printStackTrace();
             success = false;
         }
+        return success;
     }
 
    
