@@ -42,7 +42,7 @@ public class AutoGrader {
 			System.exit(1);
 		}
 		if (System.getProperty("user.home").indexOf("Rob") >= 0) projectRoot = "C:\\Users\\Work\\google drive\\CS Projects\\2014-2015\\"; //Sorry if anybody else named Rob uses this
-		else projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2014-2015\\";
+		else projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
 		/*if (args.length >= 3)
 			testFile = new File(args[2]);*/
 		String testFilePath = "Tests\\";
