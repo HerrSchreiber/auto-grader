@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import javax.mail.*;
+import javax.mail.internet.*;
 /**
  * Program that automatically inserts a test file into all project folders and
  * compiles all the files there while keeping track of output.
@@ -17,6 +19,9 @@ public class AutoGrader {
 	private static Student tempStudent;
 	private static Scanner kbReader = new Scanner(System.in);
 	private static File testFile;
+	private static String USER_NAME;
+    private static String PASSWORD;
+    private static Hashtable<String, String> EMAILS = new Hashtable<String, String>();
 	
 	/**
 	 * Inserts test file and compiles project directories and runs test file.
@@ -65,6 +70,23 @@ public class AutoGrader {
 		}
 		projectRoot += "Project " + projectNum + "\\";
 		uncompile(projectRoot);
+		try {
+			Scanner sc = new Scanner(new File("credentials"));
+			USER_NAME = sc.nextLine();
+			PASSWORD = sc.nextLine();
+			sc.close();
+			sc = new Scanner(new File("emails.csv"));
+			sc.useDelimiter(",");
+			while (sc.hasNext()) {
+				String[] temp = sc.nextLine().split(",");
+				EMAILS.put(temp[0], temp[1]);
+			}
+			sc.close();
+		}
+		catch (IOException e) {
+			System.out.println("Credentials or email list missing.");
+			e.printStackTrace();
+		}
 		walkAndMakeStudents();
 		Collections.sort(students);
 		for (Student s : students) {
@@ -285,5 +307,46 @@ public class AutoGrader {
 			return name.compareTo(s.name);
 		}
 	}
+
+	private static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
+        Properties props = System.getProperties();
+        String host = "smtp.gmail.com";
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.user", from);
+        props.put("mail.smtp.password", pass);
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+
+        Session session = Session.getDefaultInstance(props);
+        MimeMessage message = new MimeMessage(session);
+
+        try {
+            message.setFrom(new InternetAddress(from));
+            InternetAddress[] toAddress = new InternetAddress[to.length];
+
+            // To get the array of addresses
+            for( int i = 0; i < to.length; i++ ) {
+                toAddress[i] = new InternetAddress(to[i]);
+            }
+
+            for( int i = 0; i < toAddress.length; i++) {
+                message.addRecipient(Message.RecipientType.TO, toAddress[i]);
+            }
+
+            message.setSubject(subject);
+            message.setText(body);
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, from, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        }
+        catch (AddressException ae) {
+            ae.printStackTrace();
+        }
+        catch (MessagingException me) {
+            me.printStackTrace();
+        }
+    }
 
 }
