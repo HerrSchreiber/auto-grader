@@ -74,8 +74,14 @@ public class AutoGrader {
 		try {
 			FileWriter fw = new FileWriter(new File(projectRoot + "\\grades.csv"));
 			PrintWriter pw = new PrintWriter(fw);
+			new File(projectRoot + "\\feedback").mkdir();
 			for (Student s : students) {
 				pw.println(s.getName() + ", " + s.getGrade());
+				FileWriter feedbackFW = new FileWriter(new File(projectRoot + "\\feedback\\" + s.period + s.getName() + ".txt"));
+				PrintWriter feedbackPW = new PrintWriter(feedbackFW);
+				feedbackPW.println(s);
+				feedbackFW.close();
+				feedbackPW.close();
 			}
 			pw.close();
 			fw.close();
@@ -247,7 +253,7 @@ public class AutoGrader {
 	private static class Student implements Comparable<Student> {
 		private int period;
 		private String name;
-		private Stack<String> description = new Stack<String>();
+		private ArrayList<String> description = new ArrayList<String>();
 		private String grade = "";
 		public Student (int p, String n) {
 			period = p;
@@ -258,12 +264,12 @@ public class AutoGrader {
 		public String toString() {
 			String result = "";
 			try {	
-				while(true) { result += description.pop(); }
+				for (String s:description){ result += s; }
 			} catch (EmptyStackException e) {}
 			return name + ":\n\n" + result;
 		}
 		public void addDescription (String newDescription) {
-			description.push(newDescription);
+			description.add(newDescription);
 		}
 		public void grade(String g) {
 			grade = g;
