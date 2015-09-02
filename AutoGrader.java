@@ -46,6 +46,8 @@ public class AutoGrader {
 			printUsage();
 			System.exit(1);
 		}
+		// Eventually refactor this following part to get the project root from the user and
+		// store in a config file.
 		if (System.getProperty("user.home").indexOf("Rob") >= 0) projectRoot = "C:\\Users\\Work\\google drive\\CS Projects\\2014-2015\\"; //Sorry if anybody else named Rob uses this
 		else projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
 		/*if (args.length >= 3)
@@ -96,14 +98,9 @@ public class AutoGrader {
 		try {
 			FileWriter fw = new FileWriter(new File(projectRoot + "\\grades.csv"));
 			PrintWriter pw = new PrintWriter(fw);
-			new File(projectRoot + "\\feedback").mkdir();
 			for (Student s : students) {
 				pw.println(s.getName() + ", " + s.getGrade());
-				FileWriter feedbackFW = new FileWriter(new File(projectRoot + "\\feedback\\" + s.period + s.getName() + ".txt"));
-				PrintWriter feedbackPW = new PrintWriter(feedbackFW);
-				feedbackPW.println(s);
-				feedbackFW.close();
-				feedbackPW.close();
+				sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your grade for Project" + args[1], s.toString() + "\n\n" + s.getGrade());
 			}
 			pw.close();
 			fw.close();
@@ -270,24 +267,26 @@ public class AutoGrader {
 	}
 	/**
 	 * A class representing a student that is comparable.
-	 * Objects have period, name, description, and grade.
+	 * Objects have period, name, description, email and grade.
 	 */
 	private static class Student implements Comparable<Student> {
 		private int period;
 		private String name;
 		private ArrayList<String> description = new ArrayList<String>();
 		private String grade = "";
+		private String email;
 		public Student (int p, String n) {
 			period = p;
-			if (n.equals("LonghurstHay")) name = "PickardHay";				//different name in gradebook
-			else if (n.equals("LonghurstHayLate")) name = "PickardHayLate"; //add late before project# for late projects
-			else name = n;
+			name = n;
+			email = EMAILS.get(name);
 		}
 		public String toString() {
 			String result = "";
-			try {	
-				for (String s:description){ result += s; }
-			} catch (EmptyStackException e) {}
+			//try {	
+				for (String s:description) {
+					result += s;
+				}
+			//} catch (EmptyStackException e) {}
 			return name + ":\n\n" + result;
 		}
 		public void addDescription (String newDescription) {
@@ -301,6 +300,9 @@ public class AutoGrader {
 		}
 		public String getName() {
 			return name;
+		}
+		public String getEmail() {
+			return email;
 		}
 		public int compareTo(Student s) {
 			if (period != s.period) return period - s.period;
