@@ -100,7 +100,7 @@ public class AutoGrader {
 			PrintWriter pw = new PrintWriter(fw);
 			for (Student s : students) {
 				pw.println(s.getName() + ", " + s.getGrade());
-				sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your grade for Project" + args[1], s.toString() + "\n\n" + s.getGrade());
+				sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your grade for Project " + args[1], s.toString() + "\n\n" + s.getGrade());
 			}
 			pw.close();
 			fw.close();
