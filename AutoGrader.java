@@ -100,8 +100,10 @@ public class AutoGrader {
 			PrintWriter pw = new PrintWriter(fw);
 			for (Student s : students) {
 				pw.println(s.getName() + ", " + s.getGrade());
+				System.out.print("\nSending Emails.");
 				if (s.getEmail() != null) {
 					sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your grade for Project " + args[1].substring(1), s.toString() + "\n\n" + s.getGrade());
+					System.out.print(".");
 				}
 				else System.out.println(s.getName() + "'s email was not sent. Their email address is not in the emails.csv file.");
 			}
