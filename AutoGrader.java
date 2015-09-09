@@ -81,7 +81,7 @@ public class AutoGrader {
 			sc.useDelimiter(",");
 			while (sc.hasNext()) {
 				String[] temp = sc.nextLine().split(",");
-				EMAILS.put(temp[0], temp[1]);
+				EMAILS.put(temp[0].toLowerCase(), temp[1].toLowerCase());
 			}
 			sc.close();
 		}
@@ -283,7 +283,7 @@ public class AutoGrader {
 		public Student (int p, String n) {
 			period = p;
 			name = n;
-			email = EMAILS.get(name);
+			email = EMAILS.get(name.toLowerCase());
 		}
 		public String toString() {
 			String result = "";
