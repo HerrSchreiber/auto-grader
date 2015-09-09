@@ -23,7 +23,7 @@ public class Project2Test {
 		printTest("lineLengthTest", lineLengthTest());
 		printTest("lineMidpointTest", lineMidpointTest());
 		printTest("lineToStringTest", lineToStringTest());		
-		//printTest("linePerpBisectorTest", linePerpBisectorTest());
+		printTest("linePerpBisectorTest", linePerpBisectorTest());
 		/////////////////
 		//final verdict
 		/////////////////
