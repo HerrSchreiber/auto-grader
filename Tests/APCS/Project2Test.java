@@ -151,7 +151,7 @@ public class Project2Test {
 		return success;
 	}
 	
-	/*private boolean linePerpBisectorTest() {
+	private boolean linePerpBisectorTest() {
 		boolean success = true;
 		
 		try {
