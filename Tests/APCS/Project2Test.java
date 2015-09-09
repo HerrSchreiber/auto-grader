@@ -166,7 +166,7 @@ public class Project2Test {
 			success = false;
 		}
 		return success;
-	}*/
+	}
 
 	////////////////////////////////
 	// utility methods for testing
