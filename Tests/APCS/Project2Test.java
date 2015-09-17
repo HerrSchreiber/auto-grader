@@ -160,7 +160,7 @@ public class Project2Test {
 			Line l1 = new Line(p1, p2);
 			Line l2 = l1.getPerpBisector();
 			if (!isClose(l2.getSlope(), 1/1.125)) success = false;
-			if (!isClose(l2.getLength(), Math.sqrt(36.23))) success = false;
+			if (!isClose(l2.getLength(), l1.getLength())) success = false;
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			success = false;
