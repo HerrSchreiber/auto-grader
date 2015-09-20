@@ -83,7 +83,7 @@ public class AutoGrader {
 			case ADVANCED_COMPUTER_SCIENCE:
 				projectRoot += "Advanced Computer Science\\";
 		}
-		projectRoot += (projectNum != -1)? ("Project " + projectNum + "\\") : ("Regrades\\");
+		projectRoot += (!REGRADE)? ("Project " + projectNum + "\\") : ("Regrades\\");
 		uncompile(projectRoot);
 		try {
 			Scanner sc = new Scanner(new File("credentials"));
@@ -106,20 +106,46 @@ public class AutoGrader {
 		Collections.sort(students);
 		for (Student s : students) {
 			System.out.println(s);
-			s.grade(kbReader.nextLine());
+			if (REGRADE) {
+				System.out.println(s.getOldGrade());
+			}
+			s.grade(((REGRADE)?s.getOldGrade() + "\nYour new grade: ":"") + kbReader.nextLine());
 		}
 		try {
 			FileWriter fw = new FileWriter(new File(projectRoot + "\\grades.csv"));
 			PrintWriter pw = new PrintWriter(fw);
 			System.out.print("\nSending Emails.");
 			for (Student s : students) {
-				pw.println(s.getName() + ", " + s.getGrade());
+				pw.println(s.getName() + "," + s.getGrade());
 				
 				if (s.getEmail() != null) {
 					sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your " + ((REGRADE)?"re":"") + "grade for Project " + s.getProjectNumber(), s.toString() + "\n\n" + s.getGrade());
 					System.out.print(".");
 				}
 				else System.out.println(s.getName() + "'s email was not sent. Their email address is not in the emails.csv file.");
+				if (REGRADE) {
+					String oldProjectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
+					switch (classType) {
+						case AP_COMPUTER_SCIENCE:
+							oldProjectRoot += "AP Computer Science\\";
+							break;
+						case ADVANCED_COMPUTER_SCIENCE:
+							oldProjectRoot += "Advanced Computer Science\\";
+					}
+					oldProjectRoot += "Project " + projectNumber + "\\";
+					try {
+						File oldGradeFile = new File(oldProjectRoot + "grades.csv");
+					}
+					catch (Exception e) {
+						System.out.println("Can't find " + oldProjectRoot + "grades.csv");
+						System.exit(1);
+					}
+					FileWriter oldfw = new FileWriter(oldGradeFile, true);
+					PrintWriter oldpw = new PrintWriter(oldfw);
+					oldpw.println(s.getName() + "REGRADE," + s.getGrade().substring(s.getGrade().indexOf("Your new grade: ") + 16));
+					oldpw.close();
+					oldfw.close();
+				}
 			}
 			pw.close();
 			fw.close();
@@ -230,6 +256,7 @@ public class AutoGrader {
 		System.out.println("\t      -g or -G for Advanced Computer Science.\n");
 
 		System.out.println("\targ1: -# where # is the number of the project.\n");
+		System.out.println("\t      or -r or -R for regrades\n");
 
 		System.out.println("\ti.e. java AutoGrader -a -1\n");
 	}
@@ -339,6 +366,43 @@ public class AutoGrader {
 		}
 		public int getProjectNumber() {
 			return projectNumber;
+		}
+		/**
+		 * Scrapes the appropriate grades.csv file for the previous grades entered
+		 * for this student on this project
+		 * @return The old grades for this student for this project.
+		 */
+		public String getOldGrade() {
+			String oldProjectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
+			switch (classType) {
+				case AP_COMPUTER_SCIENCE:
+					oldProjectRoot += "AP Computer Science\\";
+					break;
+				case ADVANCED_COMPUTER_SCIENCE:
+					oldProjectRoot += "Advanced Computer Science\\";
+			}
+			oldProjectRoot += "Project " + projectNumber + "\\";
+			try {
+				File oldGradeFile = new File(oldProjectRoot + "grades.csv");
+			}
+			catch (Exception e) {
+				System.out.println("Can't find " + oldProjectRoot + "grades.csv");
+				System.exit(1);
+			}
+			Scanner sc = new Scanner(oldGradeFile);
+			String oldGrade = "";
+			int i = 1;
+			while (sc.hasNext()) {
+				String next = sc.nextLine();
+				if (next.indexOf(getName()) != -1) {
+					oldGrade += (oldGrade.equals("")?"First Grade:":"\nRegrade " + i++ + ":") + next.substring(next.indexOf(","));
+				}
+			}
+			if (oldGrade.equals("")) {
+				oldGrade = "No previous scores";
+			}
+			return oldGrade;
+
 		}
 		public int compareTo(Student s) {
 			if (period != s.period) return period - s.period;
