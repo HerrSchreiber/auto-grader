@@ -21,6 +21,7 @@ public class AutoGrader {
 	private static File testFile;
 	private static String USER_NAME;
     private static String PASSWORD;
+    private static boolean REGRADE;
     private static Hashtable<String, String> EMAILS = new Hashtable<String, String>();
 	
 	/**
@@ -42,14 +43,24 @@ public class AutoGrader {
 		try {
 			projectNum = Integer.parseInt(args[1].substring(1));
 		}
+		catch (NumberFormatException e) {
+			if ("-r".equals(args[1].toLowerCase())) {
+				REGRADE = true;
+				projectNum = -1;
+			}
+			else {
+				printUsage();
+				System.exit(1);
+			}
+
+		}
 		catch (Exception e) {
 			printUsage();
 			System.exit(1);
 		}
 		// Eventually refactor this following part to get the project root from the user and
 		// store in a config file.
-		if (System.getProperty("user.home").indexOf("Rob") >= 0) projectRoot = "C:\\Users\\Work\\google drive\\CS Projects\\2015-2016\\"; //Sorry if anybody else named Rob uses this
-		else projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
+		projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
 		/*if (args.length >= 3)
 			testFile = new File(args[2]);*/
 		String testFilePath = "Tests\\";
@@ -61,8 +72,10 @@ public class AutoGrader {
 				testFilePath += "ACS\\";
 
 		}
-		testFilePath += "Project" + projectNum + "Test.java";
-		testFile = new File(testFilePath);
+		if (!REGRADE) {
+			testFilePath += "Project" + projectNum + "Test.java";
+			testFile = new File(testFilePath);
+		}
 		switch (classType) {
 			case AP_COMPUTER_SCIENCE:
 				projectRoot += "AP Computer Science\\";
@@ -70,7 +83,7 @@ public class AutoGrader {
 			case ADVANCED_COMPUTER_SCIENCE:
 				projectRoot += "Advanced Computer Science\\";
 		}
-		projectRoot += "Project " + projectNum + "\\";
+		projectRoot += (projectNum != -1)? ("Project " + projectNum + "\\") : ("Regrades\\");
 		uncompile(projectRoot);
 		try {
 			Scanner sc = new Scanner(new File("credentials"));
@@ -103,7 +116,7 @@ public class AutoGrader {
 				pw.println(s.getName() + ", " + s.getGrade());
 				
 				if (s.getEmail() != null) {
-					sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your grade for Project " + args[1].substring(1), s.toString() + "\n\n" + s.getGrade());
+					sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your " + ((REGRADE)?"re":"") + "grade for Project " + s.getProjectNumber(), s.toString() + "\n\n" + s.getGrade());
 					System.out.print(".");
 				}
 				else System.out.println(s.getName() + "'s email was not sent. Their email address is not in the emails.csv file.");
@@ -133,9 +146,21 @@ public class AutoGrader {
                 		System.exit(1);
                 	}
                 	String name = f.getName().substring(1, f.getName().indexOf("Project"));
-                	tempStudent = new Student(per, name);
+                	if (REGRADE) {
+                		try {
+                			projectNum = Integer.parseInt(f.getName().substring(f.getName().indexOf("Project") + 6));
+                		}
+                		catch (Exception e) {
+                			System.out.println("Can't get project number");
+                			System.exit(1);
+                		}
+                		testFilePath += "Project" + projectNum + "Test.java";
+						testFile = new File(testFilePath);
+                	}
+                	tempStudent = new Student(per, name, projectNum);
                 	students.add(tempStudent);
-                	System.out.println("Testing " + tempStudent.getName() + "...");
+                	System.out.println("Testing " + tempStudent.getName() +"...");
+
                     walkAndCompile( f.getAbsolutePath() );
                     
                 }
@@ -281,9 +306,11 @@ public class AutoGrader {
 		private ArrayList<String> description = new ArrayList<String>();
 		private String grade = "";
 		private String email;
-		public Student (int p, String n) {
+		private int projectNumber;
+		public Student (int p, String n, int pn) {
 			period = p;
 			name = n;
+			projectNumber = pn;
 			email = EMAILS.get(name.toLowerCase());
 		}
 		public String toString() {
@@ -309,6 +336,9 @@ public class AutoGrader {
 		}
 		public String getEmail() {
 			return email;
+		}
+		public int getProjectNumber() {
+			return projectNumber;
 		}
 		public int compareTo(Student s) {
 			if (period != s.period) return period - s.period;
