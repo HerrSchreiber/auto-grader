@@ -119,7 +119,7 @@ public class AutoGrader {
 				pw.println(s.getName() + "," + s.getGrade());
 				
 				if (s.getEmail() != null) {
-					sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your " + ((REGRADE)?"re":"") + "grade for Project " + s.getProjectNumber(), s.toString() + "\n\n" + s.getGrade());
+					sendFromGMail(USER_NAME, PASSWORD, new String[]{s.getEmail()}, "Your " + ((REGRADE)?"re":"") + "grade for Project " + s.getProjectNumber(), s.getTestOutput() + "\n\n" + s.getGrade());
 					System.out.print(".");
 				}
 				else System.out.println(s.getName() + "'s email was not sent. Their email address is not in the emails.csv file.");
@@ -132,9 +132,10 @@ public class AutoGrader {
 						case ADVANCED_COMPUTER_SCIENCE:
 							oldProjectRoot += "Advanced Computer Science\\";
 					}
-					oldProjectRoot += "Project " + projectNumber + "\\";
+					oldProjectRoot += "Project " + projectNum + "\\";
+					File oldGradeFile = null;
 					try {
-						File oldGradeFile = new File(oldProjectRoot + "grades.csv");
+						oldGradeFile = new File(oldProjectRoot + "grades.csv");
 					}
 					catch (Exception e) {
 						System.out.println("Can't find " + oldProjectRoot + "grades.csv");
@@ -173,6 +174,16 @@ public class AutoGrader {
                 	}
                 	String name = f.getName().substring(1, f.getName().indexOf("Project"));
                 	if (REGRADE) {
+
+						String testFilePath = "Tests\\";
+						switch (classType) {
+							case AP_COMPUTER_SCIENCE:
+								testFilePath += "APCS\\";
+								break;
+							case ADVANCED_COMPUTER_SCIENCE:
+								testFilePath += "ACS\\";
+						}
+
                 		try {
                 			projectNum = Integer.parseInt(f.getName().substring(f.getName().indexOf("Project") + 6));
                 		}
@@ -233,7 +244,7 @@ public class AutoGrader {
 	                    		catch(InterruptedException e) {
 	                    			e.printStackTrace();
 	                    		}
-	                    		tempStudent.addDescription(stringify(log));
+	                    		tempStudent.addTestOutput(stringify(log));
 	                    	}
 	                    }
                     }
@@ -332,6 +343,7 @@ public class AutoGrader {
 		private String name;
 		private ArrayList<String> description = new ArrayList<String>();
 		private String grade = "";
+		private String testOutput; 
 		private String email;
 		private int projectNumber;
 		public Student (int p, String n, int pn) {
@@ -347,10 +359,13 @@ public class AutoGrader {
 					result += s;
 				}
 			//} catch (EmptyStackException e) {}
-			return name + ":\n\n" + result;
+			return name + ":\n\n" + result + "\n" + testOutput;
 		}
 		public void addDescription (String newDescription) {
 			description.add(newDescription);
+		}
+		public void addTestOutput (String testOutput) {
+			this.testOutput = testOutput;
 		}
 		public void grade(String g) {
 			grade = g;
@@ -360,6 +375,9 @@ public class AutoGrader {
 		}
 		public String getName() {
 			return name;
+		}
+		public String getTestOutput() {
+			return testOutput;
 		}
 		public String getEmail() {
 			return email;
@@ -382,8 +400,9 @@ public class AutoGrader {
 					oldProjectRoot += "Advanced Computer Science\\";
 			}
 			oldProjectRoot += "Project " + projectNumber + "\\";
+			File oldGradeFile = null;
 			try {
-				File oldGradeFile = new File(oldProjectRoot + "grades.csv");
+				oldGradeFile = new File(oldProjectRoot + "grades.csv");
 			}
 			catch (Exception e) {
 				System.out.println("Can't find " + oldProjectRoot + "grades.csv");
