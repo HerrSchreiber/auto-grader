@@ -40,12 +40,11 @@ public class Project6Test {
             }
             if(temp.toLowerCase().indexOf("keyword") >= 0) {
                 ary = tester.keywords;
-                tester.keywords[0] = "Schreiber";
-                tester.keywords[1] = "dog";
-                tester.keywords[2] = "cat";
-                tester.keywords[3] = "";
-                tester.keywords[4] = "    ";
-                i = 5;
+                tester.keywords[0] = "dog";
+                tester.keywords[1] = "cat";
+                tester.keywords[2] = "";
+                tester.keywords[3] = "    ";
+                i = 4;
             }
             else if(temp.toLowerCase().indexOf("response") >= 0
                     && temp.toLowerCase().indexOf("rand") >=0) {
