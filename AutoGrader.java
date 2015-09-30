@@ -328,7 +328,7 @@ public class AutoGrader {
 		for (File f : list) {
 			if (f.isDirectory())
 				uncompile(f.getAbsolutePath());
-			else if (!f.isDirectory() && f.getName().equals(testFile.getName())) {
+			else if (!f.isDirectory() && f.getName().indexOf("Test") >= 0 && f.getName().indexOf("Project") >= 0) {
 				f.delete();
 			}
 		}
