@@ -400,14 +400,16 @@ public class AutoGrader {
 			}
 			oldProjectRoot += "Project " + projectNumber + "\\";
 			File oldGradeFile = null;
+			Scanner sc = null;
 			try {
 				oldGradeFile = new File(oldProjectRoot + "grades.csv");
+				sc = new Scanner(oldGradeFile);
 			}
 			catch (Exception e) {
 				System.out.println("Can't find " + oldProjectRoot + "grades.csv");
 				System.exit(1);
 			}
-			Scanner sc = new Scanner(oldGradeFile);
+			
 			String oldGrade = "";
 			int i = 1;
 			while (sc.hasNext()) {
