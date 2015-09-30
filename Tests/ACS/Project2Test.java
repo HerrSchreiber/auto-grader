@@ -139,7 +139,9 @@ public class Project2Test {
 		try {
 			SLLStack<String> st = new SLLStack<String>();
 			printTest("\tpushMiniTest", pushMiniTest(st, "A", "A"));
+			SLLStack<String> st = new SLLStack<String>();
 			printTest("\tpopMiniTest", popMiniTest(st, null, true));
+			SLLStack<String> st = new SLLStack<String>();
 			printTest("\tpeekMiniTest", peekMiniTest(st, null, true));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -213,7 +215,7 @@ public class Project2Test {
 			ArrayQueue<String> q = new ArrayQueue<String>();
 			q.enqueue("A");
 			printTest("\tenqueueMiniTest", enqueueMiniTest(q, "B", "A"));
-			printTest("\tdequeueMiniTest", dequeueMiniTest(q, "A", false));
+			printTest("\tdequeueMiniTest", dequeueMiniTest(q, "B", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
@@ -232,7 +234,7 @@ public class Project2Test {
 			q.enqueue("B");
 			q.enqueue("C");
 			printTest("\tenqueueMiniTest", enqueueMiniTest(q, "D", "A"));
-			printTest("\tdequeueMiniTest", dequeueMiniTest(q, "A", false));
+			printTest("\tdequeueMiniTest", dequeueMiniTest(q, "B", false));
 		} catch (Exception e) {
 			e.printStackTrace();
 			success = false;
