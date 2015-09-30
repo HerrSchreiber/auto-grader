@@ -43,8 +43,7 @@ public class Project6Test {
                 tester.keywords[0] = "dog";
                 tester.keywords[1] = "cat";
                 tester.keywords[2] = "";
-                tester.keywords[3] = "    ";
-                i = 4;
+                i = 3;
             }
             else if(temp.toLowerCase().indexOf("response") >= 0
                     && temp.toLowerCase().indexOf("rand") >=0) {
