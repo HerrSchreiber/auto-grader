@@ -26,7 +26,7 @@ public class AutoGrader {
 	
 	/**
 	 * Inserts test file and compiles project directories and runs test file.
-	 * @param args The class, The project #, The test file path, and an undo flag
+	 * @param args The class, The project #, The test file path
 	 */
 	public static void main(String[] args) {
 		System.out.println();
@@ -61,8 +61,7 @@ public class AutoGrader {
 		// Eventually refactor this following part to get the project root from the user and
 		// store in a config file.
 		projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
-		/*if (args.length >= 3)
-			testFile = new File(args[2]);*/
+
 		String testFilePath = "Tests\\";
 		switch (classType) {
 			case AP_COMPUTER_SCIENCE:
