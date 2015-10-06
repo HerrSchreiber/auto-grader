@@ -184,9 +184,10 @@ public class AutoGrader {
 						}
 
                 		try {
-                			projectNum = Integer.parseInt(f.getName().substring(f.getName().indexOf("Project") + 6));
+                			projectNum = Integer.parseInt(f.getName().substring(f.getName().indexOf("Project") + 7));
                 		}
                 		catch (Exception e) {
+                			e.printStackTrace();
                 			System.out.println("Can't get project number");
                 			System.exit(1);
                 		}
