@@ -46,7 +46,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hi", 1);
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -58,7 +58,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            if (!c.getFirst().equals("hi") || !c.getRest().equals("there")) {
                 success = false;
            }
@@ -73,7 +73,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            c = c.rightArrow();
            if (!c.getFirst().equals("hit") || !c.getRest().equals("here")) {
                 success = false;
@@ -89,7 +89,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            c = c.leftArrow();
            if (!c.getFirst().equals("h") || !c.getRest().equals("ithere")) {
                 success = false;
@@ -105,7 +105,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            c = c.delete();
            if (!c.getFirst().equals("hi") || !c.getRest().equals("here")) {
                 success = false;
@@ -121,7 +121,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            c = c.backspace();
            if (!c.getFirst().equals("h") || !c.getRest().equals("there")) {
                 success = false;
@@ -137,7 +137,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            c = c.insertString("f");
            if (!c.getFirst().equals("hif") || !c.getRest().equals("there")) {
                 success = false;
@@ -153,7 +153,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            c = c.homeKey();
            if (!c.getFirst().equals("")|| !c.getRest().equals("hithere")) {
                 success = false;
@@ -169,7 +169,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            c = c.endKey();
            if (!c.getFirst().equals("hithere") || !c.getRest().equals("")) {
                 success = false;
@@ -185,7 +185,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor2("hi", "there");
+           Ed c = new Editor2("hithere", 2);
            String expected = c.toString();
            if (!expected.equals("hi|there")) {
                 success = false;
