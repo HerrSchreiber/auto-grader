@@ -39,6 +39,10 @@ public class Project7Test {
         printTest("backspaceTest", backspaceTest());
         printTest("homeTest", homeTest());
         printTest("endTest", endTest());
+        printTest("rightArrowExceptionTest", rightArrowExceptionTest());
+        printTest("deleteExceptionTest", deleteExceptionTest());
+        printTest("leftArrowExceptionTest", leftArrowExceptionTest());
+        printTest("backspaceExceptionTest", backspaceExceptionTest());
         printTest("toStringTest", toStringTest());
     }
 
@@ -172,6 +176,70 @@ public class Project7Test {
            Ed c = new Editor("hi", "there");
            c = c.endKey();
            if (!c.getFirst().equals("hithere") || !c.getRest().equals("")) {
+                success = false;
+           }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            success = false;
+        }
+        return success;
+    }
+
+    private boolean rightArrowExceptionTest() {
+        boolean success = true;
+        
+        try {
+           Ed c = new Editor("hithere", "");
+           c = c.rightArrow();
+           if (!c.getFirst().equals("hithere") || !c.getRest().equals("")) {
+                success = false;
+           }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            success = false;
+        }
+        return success;
+    }
+
+    private boolean deleteExceptionTest() {
+        boolean success = true;
+        
+        try {
+           Ed c = new Editor("hithere", "");
+           c = c.delete();
+           if (!c.getFirst().equals("hithere") || !c.getRest().equals("")) {
+                success = false;
+           }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            success = false;
+        }
+        return success;
+    }
+
+    private boolean leftArrowExceptionTest() {
+        boolean success = true;
+        
+        try {
+           Ed c = new Editor("", "hithere");
+           c = c.leftArrow();
+           if (!c.getFirst().equals("") || !c.getRest().equals("hithere")) {
+                success = false;
+           }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            success = false;
+        }
+        return success;
+    }
+
+    private boolean backspaceExceptionTest() {
+        boolean success = true;
+        
+        try {
+           Ed c = new Editor("", "hithere");
+           c = c.backspace();
+           if (!c.getFirst().equals("") || !c.getRest().equals("hithere")) {
                 success = false;
            }
         } catch (Exception e) {
