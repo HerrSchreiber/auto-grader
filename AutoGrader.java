@@ -217,7 +217,7 @@ public class AutoGrader {
             if (list == null) return;
 
             for ( File f : list ) {
-                if ( f.isDirectory() && !f.getName().equals("_MACOSX")) {
+                if ( f.isDirectory() && !f.getName().equals("__MACOSX")) {
                     walkAndCompile( f.getAbsolutePath() );
                 }
                 else if (!f.isDirectory() && f.getName().substring(f.getName().length() - 5).equals(".java")) {
