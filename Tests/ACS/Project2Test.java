@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Console app to test GridMonitor class. Needs tests for more than one input scenario.
- * @author mvail
+ * Test for Project 2 - ArrayQueue &amp; SLLStack
+ * @author Rob Schreiber
  */
 public class Project2Test {
 	private int passes = 0;
@@ -94,7 +94,7 @@ public class Project2Test {
 			double thousandTimePerOp = thousandTime / 1000;
 			double tenKTimePerOp = tenKTime / 10000;
 			System.out.println(thousandTimePerOp + ", " + tenKTimePerOp);	
-			success = Math.abs((thousandTimePerOp / tenKTimePerOp) - 1) < 9;
+			success = Math.abs((thousandTimePerOp / tenKTimePerOp)) < 10;
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			success = false;
@@ -124,7 +124,7 @@ public class Project2Test {
 			double thousandTimePerOp = thousandTime / 1000;
 			double tenKTimePerOp = tenKTime / 10000;
 			System.out.println(thousandTimePerOp + ", " + tenKTimePerOp);	
-			success = Math.abs((thousandTimePerOp / tenKTimePerOp) - 1) < 3;
+			success = Math.abs((thousandTimePerOp / tenKTimePerOp)) < 10;
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			success = false;
@@ -139,9 +139,9 @@ public class Project2Test {
 		try {
 			SLLStack<String> st = new SLLStack<String>();
 			printTest("\tpushMiniTest", pushMiniTest(st, "A", "A"));
-			SLLStack<String> st = new SLLStack<String>();
+			st = new SLLStack<String>();
 			printTest("\tpopMiniTest", popMiniTest(st, null, true));
-			SLLStack<String> st = new SLLStack<String>();
+			st = new SLLStack<String>();
 			printTest("\tpeekMiniTest", peekMiniTest(st, null, true));
 		} catch (Exception e) {
 			e.printStackTrace();
