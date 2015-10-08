@@ -189,7 +189,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor("hithere", "");
+           Ed c = new Editor2("hithere", "");
            c = c.rightArrow();
            if (!c.getFirst().equals("hithere") || !c.getRest().equals("")) {
                 success = false;
@@ -205,7 +205,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor("hithere", "");
+           Ed c = new Editor2("hithere", "");
            c = c.delete();
            if (!c.getFirst().equals("hithere") || !c.getRest().equals("")) {
                 success = false;
@@ -221,7 +221,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor("", "hithere");
+           Ed c = new Editor2("", "hithere");
            c = c.leftArrow();
            if (!c.getFirst().equals("") || !c.getRest().equals("hithere")) {
                 success = false;
@@ -237,7 +237,7 @@ public class Project8Test {
         boolean success = true;
         
         try {
-           Ed c = new Editor("", "hithere");
+           Ed c = new Editor2("", "hithere");
            c = c.backspace();
            if (!c.getFirst().equals("") || !c.getRest().equals("hithere")) {
                 success = false;
