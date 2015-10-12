@@ -50,7 +50,7 @@ public class Project9Test {
                         System.out.println("error:" + testString + " is a vowel");
                     }
                 }
-                else if (i == 89 || i > 90 && i < 97); // behavior poorly defined for "y" & symbols
+                else if (i == 89 || i == 121 || i > 90 && i < 97); // behavior poorly defined for "y" & symbols
                 else {
                     if (p.isVowel(testString)) {
                         success = false;
