@@ -102,8 +102,8 @@ public class Project9Test {
         
         try {
             PigLatinTranslator p = new PigLatinTranslator();
-            String testString = "esttay";
-            String expectedValue = "test";
+            String testString = "estray";
+            String expectedValue = "rest";
             String actualValue = p.translateP2E(testString);
             if (!expectedValue.equals(actualValue)) success = false;
         } catch (Exception e) {
