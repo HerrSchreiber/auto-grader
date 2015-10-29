@@ -19,31 +19,30 @@ public class Project4Test {
 		tester.runTests();
 	}
 	
-	/** Run tests on GridMonitor constructor and expected methods */
+	/** Run tests */
 	private void runTests() {
 		//////////////////////////////////////////////////////////////////
 		// run tests on all interface methods to confirm correct results
 		// and behavior under normal and exceptional use cases
 		//////////////////////////////////////////////////////////////////
 	    
-	    // TESTS THAT STILL NEED COVERAGE
-	    // put(Double key, Value v);
-	    // get(Double key);
-	    // delete(Double key);
-	    // contains(Double key);
-	    // isEmpty();
-	    // size();
-	    // min();
-	    // max();
-	    // floor(Double key);
-	    // ceiling(Double key);
-	    // rank(Double key);
-	    // select(int rank);
-	    // deleteMin();
-	    // deleteMax();
-	    // size(Double keyLo, Double keyHi);
-	    // keys(Double keyLo, Double keyHi);
-	    // keys();
+	    printTest("putTest",putTest());
+	    printTest("getTest",getTest());
+	    printTest("deleteTest",deleteTest());
+	    printTest("containsTest",containsTest());
+	    printTest("isEmptyTest",isEmptyTest());
+	    printTest("sizeTest",sizeTest());
+	    printTest("minTest",minTest());
+	    printTest("maxTest",maxTest());
+	    printTest("floorTest",floorTest());
+	    printTest("ceilingTest",ceilingTest());
+	    printTest("rankTest",rankTest());
+	    printTest("selectTest",selectTest());
+	    printTest("deleteMinTest",deleteMinTest());
+	    printTest("deleteMaxTest",deleteMaxTest());
+	    printTest("sizeWithKeysTest",sizeWithKeysTest());
+	    printTest("keysWithKeysTest",keysWithKeysTest());
+	    printTest("keysTest",keysTest());
 
 		
 		
@@ -52,8 +51,332 @@ public class Project4Test {
 		/////////////////
 		printFinalSummary();
 	}
+
+	private boolean putGetTest() {
+		boolean success = true;
 		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			for (int i = 0; i < 10; i++) {
+				if(ist.get(ary[i]) != i) success = false;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}	
+
+	private boolean deleteTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			ist.delete(ary[2]);
+			if (size != 9) success = false;
+			if (ist.get(ary[2]) != null) success = false;
+			
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean containsTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			for (int i = 0; i < 10; i++) {
+				if(ist.contains(ary[i]) != true) success = false;
+			}
+			
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
 	
+	private boolean isEmptyTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			if (!ist.isEmpty()) success = false;
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			if (ist.isEmpty()) success = false;
+			
+			
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean sizeTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				if (ist.size() != i) success = false;
+				ist.put(ary[i], i);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean minTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			Arrays.sort(ary);
+			if (!ist.min().equals(ary[0])) success = false;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean maxTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			Arrays.sort(ary);
+			if (!ist.max().equals(ary[9])) success = false;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean floorTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Double, Double> ist = new InterpolationSymbolTable<Double, Double>();
+			for (int i = 0; i < 10; i++) {
+				if (ist.size() != i) success = false;
+				ist.put(i+0.5, i);
+			}
+			if (!ist.floor(7).equals(6.5)) success = false;
+			if (!ist.floor(7.5).equals(7.5)) success = false;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean ceilingTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Double, Double> ist = new InterpolationSymbolTable<Double, Double>();
+			for (int i = 0; i < 10; i++) {
+				if (ist.size() != i) success = false;
+				ist.put(i+0.5, i);
+			}
+			if (!ist.ceiling(7).equals(7.5)) success = false;
+			if (!ist.ceiling(7.5).equals(7.5)) success = false;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean rankTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			Arrays.sort(ary);
+			for (int i = 0; i < 10; i++) {
+				if (ist.rank(ary[i]) != i) success = false;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean selectTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			Arrays.sort(ary);
+			for (int i = 0; i < 10; i++) {
+				if (!ist.select(i).equals(ary[i])) success = false;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean deleteMinTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			ist.deleteMin();
+			Arrays.sort(ary);
+			if (ist.get(ary[0]) != null) success = false;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean deleteMaxTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			ist.deleteMax();
+			Arrays.sort(ary);
+			if (ist.get(ary[9]) != null) success = false;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean sizeWithKeysTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			Arrays.sort(ary);
+			if (ist.size(ary[2], ary[6]) != 5) success = false;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean keysWithKeysTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			Arrays.sort(ary);
+			Iterable<Integer> keys = ist.keys(2, 6);
+			int i = 2;
+			for (Integer key : keys) {
+				if (!key.equals(ary[i])) success = false;
+				i++;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+
+	private boolean keysTest() {
+		boolean success = true;
+		
+		try {
+			InterpolationSymbolTable<Integer, Integer> ist = new InterpolationSymbolTable<Integer, Integer>();
+			Integer[] ary = generateRandomArray(10);
+			for (int i = 0; i < 10; i++) {
+				ist.put(ary[i], i);
+			}
+			Arrays.sort(ary);
+			Iterable<Integer> keys = ist.keys();
+			int i = 0;
+			for (Integer key : keys) {
+				if (!key.equals(ary[i])) success = false;
+				i++;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
 	
 	////////////////////////////////
 	// utility methods for testing
