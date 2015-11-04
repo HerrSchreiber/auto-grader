@@ -88,9 +88,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            RationalNumberInterface r2 = new RationalNumber(14, 14);
-            RationalNumberInterface result = r1.add(r2);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            RationalNumber r2 = new RationalNumber(14, 14);
+            RationalNumber result = r1.add(r2);
             if (result.getNumerator() != 29 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -103,9 +103,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            MixedNumberInterface r2 = new MixedNumber(0, 14, 14);
-            RationalNumberInterface result = r1.add(r2);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            MixedNumber r2 = new MixedNumber(0, 14, 14);
+            RationalNumber result = r1.add(r2);
             if (result.getNumerator() != 29 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -118,9 +118,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            RationalNumberInterface r2 = new RationalNumber(14, 14);
-            RationalNumberInterface result = r1.subtract(r2);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            RationalNumber r2 = new RationalNumber(14, 14);
+            RationalNumber result = r1.subtract(r2);
             if (result.getNumerator() != 15 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -133,9 +133,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            MixedNumberInterface r2 = new MixedNumber(0, 14, 14);
-            RationalNumberInterface result = r1.subtract(r2);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            MixedNumber r2 = new MixedNumber(0, 14, 14);
+            RationalNumber result = r1.subtract(r2);
             if (result.getNumerator() != 15 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -148,9 +148,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            RationalNumberInterface r2 = new RationalNumber(14, 14);
-            RationalNumberInterface result = r1.multiply(r2);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            RationalNumber r2 = new RationalNumber(14, 14);
+            RationalNumber result = r1.multiply(r2);
             if (result.getNumerator() != 22 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -163,9 +163,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            MixedNumberInterface r2 = new MixedNumber(0, 14, 14);
-            RationalNumberInterface result = r1.multiply(r2);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            MixedNumber r2 = new MixedNumber(0, 14, 14);
+            RationalNumber result = r1.multiply(r2);
             if (result.getNumerator() != 22 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -178,9 +178,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            RationalNumberInterface r2 = new RationalNumber(14, 14);
-            RationalNumberInterface result = r1.divide(r2);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            RationalNumber r2 = new RationalNumber(14, 14);
+            RationalNumber result = r1.divide(r2);
             if (result.getNumerator() != 22 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -193,9 +193,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            MixedNumberInterface r2 = new MixedNumber(0, 14, 14);
-            RationalNumberInterface result = r1.divide(r2);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            MixedNumber r2 = new MixedNumber(0, 14, 14);
+            RationalNumber result = r1.divide(r2);
             if (result.getNumerator() != 22 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -208,9 +208,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
-            MixedNumberInterface actualValue = r1.convertToMixed();
-            MixedNumberInterface expectedValue = new MixedNumber(3, 1, 7);
+            RationalNumber r1 = new RationalNumber(22, 7);
+            MixedNumber actualValue = r1.convertToMixed();
+            MixedNumber expectedValue = new MixedNumber(3, 1, 7);
             if (expectedValue.getWhole() != actualValue.getWhole() || expectedValue.getNumerator() != actualValue.getNumerator() || expectedValue.getDenominator() != actualValue.getDenominator()) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -223,7 +223,7 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            RationalNumberInterface r1 = new RationalNumber(22, 7);
+            RationalNumber r1 = new RationalNumber(22, 7);
             String actualValue = r1.toString();
             String expectedValue1 = "22/7";
             String expectedValue2 = "22 / 7";
@@ -253,7 +253,7 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r = new MixedNumber(0, 22, 7);
+            MixedNumber r = new MixedNumber(0, 22, 7);
             if (r.getWhole() != 3 || r.getNumerator() != 1 || r.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -266,9 +266,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            RationalNumberInterface r2 = new RationalNumber(14, 14);
-            MixedNumberInterface result = r1.add(r2);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            RationalNumber r2 = new RationalNumber(14, 14);
+            MixedNumber result = r1.add(r2);
             if (result.getWhole() != 4 || result.getNumerator() != 1 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -281,9 +281,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            MixedNumberInterface r2 = new MixedNumber(0, 14, 14);
-            MixedNumberInterface result = r1.add(r2);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            MixedNumber r2 = new MixedNumber(0, 14, 14);
+            MixedNumber result = r1.add(r2);
             if (result.getWhole() != 4 || result.getNumerator() != 1 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -296,9 +296,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            RationalNumberInterface r2 = new RationalNumber(14, 14);
-            MixedNumberInterface result = r1.subtract(r2);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            RationalNumber r2 = new RationalNumber(14, 14);
+            MixedNumber result = r1.subtract(r2);
             if (result.getWhole() != 2 || result.getNumerator() != 1 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -311,9 +311,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            MixedNumberInterface r2 = new MixedNumber(0, 14, 14);
-            MixedNumberInterface result = r1.subtract(r2);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            MixedNumber r2 = new MixedNumber(0, 14, 14);
+            MixedNumber result = r1.subtract(r2);
             if (result.getWhole() != 2 || result.getNumerator() != 1 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -326,9 +326,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            RationalNumberInterface r2 = new RationalNumber(14, 14);
-            MixedNumberInterface result = r1.multiply(r2);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            RationalNumber r2 = new RationalNumber(14, 14);
+            MixedNumber result = r1.multiply(r2);
             if (result.getWhole() != 3 || result.getNumerator() != 1 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -341,9 +341,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            MixedNumberInterface r2 = new MixedNumber(0, 14, 14);
-            MixedNumberInterface result = r1.multiply(r2);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            MixedNumber r2 = new MixedNumber(0, 14, 14);
+            MixedNumber result = r1.multiply(r2);
             if (result.getWhole() != 3 || result.getNumerator() != 1 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -356,9 +356,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            RationalNumberInterface r2 = new RationalNumber(14, 14);
-            MixedNumberInterface result = r1.divide(r2);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            RationalNumber r2 = new RationalNumber(14, 14);
+            MixedNumber result = r1.divide(r2);
             if (result.getWhole() != 3 || result.getNumerator() != 1 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -371,9 +371,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            MixedNumberInterface r2 = new MixedNumber(0, 14, 14);
-            MixedNumberInterface result = r1.divide(r2);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            MixedNumber r2 = new MixedNumber(0, 14, 14);
+            MixedNumber result = r1.divide(r2);
             if (result.getWhole() != 3 || result.getNumerator() != 1 || result.getDenominator() != 7) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -386,9 +386,9 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
-            RationalNumberInterface actualValue = r1.convertToRational();
-            RationalNumberInterface expectedValue = new RationalNumber(22, 7);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
+            RationalNumber actualValue = r1.convertToRational();
+            RationalNumber expectedValue = new RationalNumber(22, 7);
             if (expectedValue.getNumerator() != actualValue.getNumerator() || expectedValue.getDenominator() != actualValue.getDenominator()) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -401,7 +401,7 @@ public class Project11Test {
         boolean success = true;
         
         try {
-            MixedNumberInterface r1 = new MixedNumber(0, 22, 7);
+            MixedNumber r1 = new MixedNumber(0, 22, 7);
             String actualValue = r1.toString();
             String expectedValue1 = "3 1/7";
             String expectedValue2 = "3 1 / 7";
