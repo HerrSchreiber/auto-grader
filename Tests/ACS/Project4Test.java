@@ -56,7 +56,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -76,7 +76,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -97,7 +97,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -118,7 +118,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			if (!ist.isEmpty()) success = false;
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
@@ -139,7 +139,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				if (ist.size() != i) success = false;
@@ -157,7 +157,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -176,7 +176,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -233,7 +233,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -254,7 +254,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -275,7 +275,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -295,7 +295,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -315,7 +315,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -334,7 +334,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
@@ -358,7 +358,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Integer> ist = new InterpolationSymbolTable<Double, Integer>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				ist.put(ary[i], i);
