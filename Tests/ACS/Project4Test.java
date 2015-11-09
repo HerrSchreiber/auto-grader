@@ -26,8 +26,7 @@ public class Project4Test {
 		// and behavior under normal and exceptional use cases
 		//////////////////////////////////////////////////////////////////
 	    
-	    printTest("putTest",putTest());
-	    printTest("getTest",getTest());
+	    printTest("putGetTest",putGetTest());
 	    printTest("deleteTest",deleteTest());
 	    printTest("containsTest",containsTest());
 	    printTest("isEmptyTest",isEmptyTest());
@@ -59,10 +58,10 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			for (int i = 0; i < 10; i++) {
-				if(ist.get(ary[i]) != i) success = false;
+				if(ist.get((double)ary[i]) != i) success = false;
 			}
 
 		} catch (Exception e) {
@@ -79,11 +78,11 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
-			ist.delete(ary[2]);
-			if (size != 9) success = false;
-			if (ist.get(ary[2]) != null) success = false;
+			ist.delete((double)ary[2]);
+			if (ist.size() != 9) success = false;
+			if (ist.get((double)ary[2]) != null) success = false;
 			
 
 		} catch (Exception e) {
@@ -100,10 +99,10 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			for (int i = 0; i < 10; i++) {
-				if(ist.contains(ary[i]) != true) success = false;
+				if(ist.contains((double)ary[i]) != true) success = false;
 			}
 			
 
@@ -122,7 +121,7 @@ public class Project4Test {
 			if (!ist.isEmpty()) success = false;
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			if (ist.isEmpty()) success = false;
 			
@@ -143,7 +142,7 @@ public class Project4Test {
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
 				if (ist.size() != i) success = false;
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 
 		} catch (Exception e) {
@@ -160,10 +159,10 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
-			if (!ist.min().equals(ary[0])) success = false;
+			if (!ist.min().equals((double)ary[0])) success = false;
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -179,10 +178,10 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
-			if (!ist.max().equals(ary[9])) success = false;
+			if (!ist.max().equals((double)ary[9])) success = false;
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -195,7 +194,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Double> ist = new InterpolationSymbolTable<Double, Double>();
+			InterpolationSymbolTable<Double> ist = new InterpolationSymbolTable<Double>();
 			for (int i = 0; i < 10; i++) {
 				if (ist.size() != i) success = false;
 				ist.put(i+0.5, i);
@@ -214,7 +213,7 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double, Double> ist = new InterpolationSymbolTable<Double, Double>();
+			InterpolationSymbolTable<Double> ist = new InterpolationSymbolTable<Double>();
 			for (int i = 0; i < 10; i++) {
 				if (ist.size() != i) success = false;
 				ist.put(i+0.5, i);
@@ -236,11 +235,11 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
 			for (int i = 0; i < 10; i++) {
-				if (ist.rank(ary[i]) != i) success = false;
+				if (ist.rank((double)ary[i]) != i) success = false;
 			}
 
 		} catch (Exception e) {
@@ -257,11 +256,11 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
 			for (int i = 0; i < 10; i++) {
-				if (!ist.select(i).equals(ary[i])) success = false;
+				if (!ist.select(i).equals((double)ary[i])) success = false;
 			}
 
 		} catch (Exception e) {
@@ -278,11 +277,11 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)(double)ary[i], i);
 			}
 			ist.deleteMin();
 			Arrays.sort(ary);
-			if (ist.get(ary[0]) != null) success = false;
+			if (ist.get((double)ary[0]) != null) success = false;
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -298,11 +297,11 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			ist.deleteMax();
 			Arrays.sort(ary);
-			if (ist.get(ary[9]) != null) success = false;
+			if (ist.get((double)ary[9]) != null) success = false;
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -318,10 +317,10 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
-			if (ist.size(ary[2], ary[6]) != 5) success = false;
+			if (ist.size((double)ary[2], (double)ary[6]) != 5) success = false;
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -337,13 +336,13 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
 			Iterable<Integer> keys = ist.keys(2, 6);
 			int i = 2;
 			for (Integer key : keys) {
-				if (!key.equals(ary[i])) success = false;
+				if (!key.equals((double)ary[i])) success = false;
 				i++;
 			}
 
@@ -361,13 +360,13 @@ public class Project4Test {
 			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			Integer[] ary = generateRandomArray(10);
 			for (int i = 0; i < 10; i++) {
-				ist.put(ary[i], i);
+				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
 			Iterable<Integer> keys = ist.keys();
 			int i = 0;
 			for (Integer key : keys) {
-				if (!key.equals(ary[i])) success = false;
+				if (!key.equals((double)ary[i])) success = false;
 				i++;
 			}
 
