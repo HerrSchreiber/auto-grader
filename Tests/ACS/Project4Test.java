@@ -194,12 +194,12 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double> ist = new InterpolationSymbolTable<Double>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			for (int i = 0; i < 10; i++) {
 				if (ist.size() != i) success = false;
 				ist.put(i+0.5, i);
 			}
-			if (!ist.floor(7).equals(6.5)) success = false;
+			if (!ist.floor(7.0).equals(6.5)) success = false;
 			if (!ist.floor(7.5).equals(7.5)) success = false;
 
 		} catch (Exception e) {
@@ -213,12 +213,12 @@ public class Project4Test {
 		boolean success = true;
 		
 		try {
-			InterpolationSymbolTable<Double> ist = new InterpolationSymbolTable<Double>();
+			InterpolationSymbolTable<Integer> ist = new InterpolationSymbolTable<Integer>();
 			for (int i = 0; i < 10; i++) {
 				if (ist.size() != i) success = false;
 				ist.put(i+0.5, i);
 			}
-			if (!ist.ceiling(7).equals(7.5)) success = false;
+			if (!ist.ceiling(7.0).equals(7.5)) success = false;
 			if (!ist.ceiling(7.5).equals(7.5)) success = false;
 
 		} catch (Exception e) {
@@ -339,9 +339,9 @@ public class Project4Test {
 				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
-			Iterable<Integer> keys = ist.keys(2, 6);
+			Iterable<Double> keys = ist.keys(2.0, 6.0);
 			int i = 2;
-			for (Integer key : keys) {
+			for (Double key : keys) {
 				if (!key.equals((double)ary[i])) success = false;
 				i++;
 			}
@@ -363,9 +363,9 @@ public class Project4Test {
 				ist.put((double)ary[i], i);
 			}
 			Arrays.sort(ary);
-			Iterable<Integer> keys = ist.keys();
+			Iterable<Double> keys = ist.keys();
 			int i = 0;
-			for (Integer key : keys) {
+			for (Double key : keys) {
 				if (!key.equals((double)ary[i])) success = false;
 				i++;
 			}
