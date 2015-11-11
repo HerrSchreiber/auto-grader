@@ -172,9 +172,9 @@ public class Project5Test {
 				rbbst.put(ary[i], i);
 			}
 			Arrays.sort(ary);
-			Iterable<Double> keys = rbbst.keys();
+			Iterable<Integer> keys = rbbst.keys();
 			int i = 0;
-			for (Double key : keys) {
+			for (Integer key : keys) {
 				if (!key.equals(ary[i])) success = false;
 				i++;
 			}
