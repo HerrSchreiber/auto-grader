@@ -55,6 +55,8 @@ public class Project11Test {
         printTest("mixedNumberDivideMixedNumberTest", mixedNumberDivideMixedNumberTest());
         printTest("mixedNumberConvertToMixedTest", mixedNumberConvertToRationalTest());
         printTest("mixedNumberToStringTest", mixedNumberToStringTest());
+
+        printFinalSummary();
     }
 
     // Rational Number Tests
