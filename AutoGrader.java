@@ -269,7 +269,7 @@ public class AutoGrader {
 		System.out.println("\targ1: -# where # is the number of the project.\n");
 		System.out.println("\t      or -r or -R for regrades\n");
 
-		System.out.println("\ti.e. java AutoGrader -a -1\n");
+		System.out.println("\te.g. java AutoGrader -a -1\n");
 	}
 	/**
 	 * Runs javac on the file passed and outputs to a file log.txt.
