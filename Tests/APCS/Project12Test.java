@@ -31,6 +31,28 @@ public class Project12Test {
         //////////////////////////////////////////////////////////////////
 
         printTest("binaryNumberInterfaceTest", binaryNumberInterfaceTest());
+        printTest("intConstructorTest", intConstructorTest());
+        printTest("stringConstructorTest", stringConstructorTest());
+        printTest("negativeStringConstructorTest", negativeStringConstructorTest());
+        printTest("addImmutabilityTest", addImmutabilityTest());
+        printTest("subtractImmutabilityTest", subtractImmutabilityTest());
+        printTest("negateImmutabilityTest", negateImmutabilityTest());
+        printTest("shiftLeftImmutabilityTest", shiftLeftImmutabilityTest());
+        printTest("uShiftRightImmutabilityTest", uShiftRightImmutabilityTest());
+        printTest("andImmutabilityTest", andImmutabilityTest());
+        printTest("orImmutabilityTest", orImmutabilityTest());
+        printTest("xorImmutabilityTest", xorImmutabilityTest());
+        printTest("addTest", addTest());
+        printTest("subtractTest", subtractTest());
+        printTest("negateTest", negateTest());
+        printTest("shiftLeftTest", shiftLeftTest());
+        printTest("uShiftRightTest", uShiftRightTest());
+        printTest("andTest", andTest());
+        printTest("orTest", orTest());
+        printTest("xorTest", xorTest());
+        printTest("toIntTest", toIntTest());
+        printTest("toBinaryStringTest", toBinaryStringTest());
+        printTest("toHexStringTest", toHexStringTest());
 
         printFinalSummary();
     }
@@ -72,6 +94,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
     
     private boolean negativeStringConstructorTest() {
@@ -84,6 +107,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
     
     private boolean addImmutabilityTest() {
@@ -98,6 +122,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean subtractImmutabilityTest() {
@@ -112,6 +137,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean negateImmutabilityTest() {
@@ -125,6 +151,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean shiftLeftImmutabilityTest() {
@@ -138,6 +165,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean uShiftRightImmutabilityTest() {
@@ -151,6 +179,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean andImmutabilityTest() {
@@ -165,6 +194,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean orImmutabilityTest() {
@@ -179,6 +209,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean xorImmutabilityTest() {
@@ -193,6 +224,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean addTest() {
@@ -207,6 +239,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean subtractTest() {
@@ -221,6 +254,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean negateTest() {
@@ -234,6 +268,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean shiftLeftTest() {
@@ -247,6 +282,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean uShiftRightTest() {
@@ -260,6 +296,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean andTest() {
@@ -274,6 +311,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean orTest() {
@@ -288,6 +326,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean xorTest() {
@@ -302,6 +341,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean toIntTest() {
@@ -309,12 +349,13 @@ public class Project12Test {
         
         try {
             BinaryNumber x = new BinaryNumber("0b000000101");
-            String result = x.toBinaryString();
-            if (!(result.toInt() == 5)) success = false;
+            int result = x.toInt();
+            if (!(result == 5)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean toBinaryStringTest() {
@@ -328,6 +369,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
     private boolean toHexStringTest() {
@@ -341,6 +383,7 @@ public class Project12Test {
             e.printStackTrace(System.out);
             success = false;
         }
+        return success;
     }
 
 
