@@ -49,7 +49,7 @@ public class Project13Test {
 
         try {
             double result = SpaceWeights.mercuryWeight(50);
-            if (!result.isClose(50 * 3.70)) success = false;
+            if (!isClose(result, 50 * 3.70)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -62,7 +62,7 @@ public class Project13Test {
 
         try {
             double result = SpaceWeights.venusWeight(50);
-            if (!result.isClose(50 * 8.87)) success = false;
+            if (!isClose(result, 50 * 8.87)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -75,7 +75,7 @@ public class Project13Test {
 
         try {
             double result = SpaceWeights.earthWeight(50);
-            if (!result.isClose(50 * 9.81)) success = false;
+            if (!isClose(result, 50 * 9.81)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -88,7 +88,7 @@ public class Project13Test {
 
         try {
             double result = SpaceWeights.marsWeight(50);
-            if (!result.isClose(50 * 3.71)) success = false;
+            if (!isClose(result, 50 * 3.71)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -101,7 +101,7 @@ public class Project13Test {
 
         try {
             double result = SpaceWeights.jupiterWeight(50);
-            if (!result.isClose(50 * 23.12)) success = false;
+            if (!isClose(result, 50 * 23.12)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -114,7 +114,7 @@ public class Project13Test {
 
         try {
             double result = SpaceWeights.saturnWeight(50);
-            if (!result.isClose(50 * 10.44)) success = false;
+            if (!isClose(result, 50 * 10.44)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -127,7 +127,7 @@ public class Project13Test {
 
         try {
             double result = SpaceWeights.uranusWeight(50);
-            if (!result.isClose(50 * 8.69)) success = false;
+            if (!isClose(result, 50 * 8.69)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -140,7 +140,7 @@ public class Project13Test {
 
         try {
             double result = SpaceWeights.neptuneWeight(50);
-            if (!result.isClose(50 * 11.00)) success = false;
+            if (!isClose(result, 50 * 11.00)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
@@ -152,8 +152,8 @@ public class Project13Test {
         boolean success = true;
 
         try {
-            double result = SpaceWeights.arbitraryPlanetWeight(100, 6E24, 5.38E6); //TODO: Double check these values
-            if (!result.isClose(100 * 9.81)) success = false;
+            double result = SpaceWeights.arbitraryPlanetWeight(100, 100, 100); //TODO: Double check these values
+            if (!isClose(result, 6.67E-11)) success = false;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             success = false;
