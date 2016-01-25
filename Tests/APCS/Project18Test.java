@@ -36,6 +36,8 @@ public class Project18Test {
         printTest("addAtIndexTest", addAtIndexTest());
         printTest("removeTest", removeTest());
         printTest("setTest", setTest());
+
+        printFinalSummary();
     	
     }
 

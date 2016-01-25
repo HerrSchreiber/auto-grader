@@ -47,6 +47,8 @@ public class Project19Test {
         printTest("ascendingOrderDescendingInsertionSortTest", ascendingOrderDescendingInsertionSortTest());
         printTest("descendingOrderDescendingInsertionSortTest", descendingOrderDescendingInsertionSortTest());
         printTest("randomOrderWithRepeatsDescendingInsertionSortTest", randomOrderWithRepeatsDescendingInsertionSortTest());
+
+        printFinalSummary();
     	
     }
 

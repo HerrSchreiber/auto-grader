@@ -46,7 +46,7 @@ public class Project21Test {
         printTest("negativeDeterminantTest", negativeDeterminantTest());
         printTest("inverseTest", inverseTest());
         
-    	
+    	printFinalSummary();
     }
 
     // Add Tests

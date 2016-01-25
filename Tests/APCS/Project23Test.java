@@ -44,6 +44,8 @@ public class Project23Test {
         printTest("hundredElementQueueEnqueueTest", hundredElementQueueEnqueueTest());
         printTest("randomEnqueueDequeueTest", randomEnqueueDequeueTest());
         printTest("queueDepletionTest", queueDepletionTest());
+
+        printFinalSummary();
     	
     }
 

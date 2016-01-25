@@ -39,6 +39,9 @@ public class Project16Test {
         printTest("elevensBoardCardIndexesTest", elevensBoardCardIndexesTest());
         printTest("elevensBoardGameIsWonTest", elevensBoardGameIsWonTest());
         printTest("elevensBoardAnotherPlayTest", elevensBoardAnotherPlayTest());
+
+        printFinalSummary();
+
                
     }
 

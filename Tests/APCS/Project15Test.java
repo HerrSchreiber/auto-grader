@@ -37,6 +37,9 @@ public class Project15Test {
     	printTest("deckEmptyTest", deckEmptyTest());
     	printTest("deckSizeTest", deckSizeTest());
     	printTest("deckShuffleTest", deckShuffleTest());
+
+        printFinalSummary();
+
         
     }
 

@@ -44,6 +44,8 @@ public class Project8Test {
         printTest("leftArrowExceptionTest", leftArrowExceptionTest());
         printTest("backspaceExceptionTest", backspaceExceptionTest());
         printTest("toStringTest", toStringTest());
+
+        printFinalSummary();
     }
 
     private boolean edInterfaceTest() {

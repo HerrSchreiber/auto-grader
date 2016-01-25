@@ -39,6 +39,8 @@ public class Project20Test {
         printTest("ascendingOrderQuickSortTest", ascendingOrderQuickSortTest());
         printTest("descendingOrderQuickSortTest", descendingOrderQuickSortTest());
         printTest("randomOrderWithRepeatsQuickSortTest", randomOrderWithRepeatsQuickSortTest());
+
+        printFinalSummary();
     	
     }
 

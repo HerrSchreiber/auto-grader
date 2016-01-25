@@ -35,6 +35,8 @@ public class Project17Test {
         printTest("removeTest", removeTest());
         printTest("completeAndClearTest", completeAndClearTest());
         printTest("exportTest", exportTest());
+
+        printFinalSummary();
     	
     }
 

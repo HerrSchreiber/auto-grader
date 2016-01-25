@@ -35,6 +35,8 @@ public class Project9Test {
         printTest("e2pConsonantTest", e2pConsonantTest());
         printTest("e2pVowelTest", e2pVowelTest());
         printTest("p2eTest", p2eTest());
+
+        printFinalSummary();
     }
 
     private boolean isVowelTest() {

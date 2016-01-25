@@ -40,6 +40,9 @@ public class Project10Test {
         printTest("hourlyEmployeeAddHoursTest", hourlyEmployeeAddHoursTest());
         printTest("executiveAwardBonusTest", executiveAwardBonusTest());
         printTest("toStringTests", toStringTests());
+
+        printFinalSummary();
+
     }
 
     private boolean staffMemberAbstractTest() {
