@@ -139,6 +139,7 @@ public class Project5Test {
     /** Print a final summary */
     private void printFinalSummary() {
         System.out.printf("\nTotal Tests: %d,  Passed: %d,  Failed: %d\n", total, passes, failures);
+				System.out.println((int)(((double)passes/total)*20) + "/20");
     }
 
     /** Compare two doubles and return true if they are within TOLERANCE, else false
