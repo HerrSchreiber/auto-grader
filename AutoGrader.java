@@ -359,7 +359,7 @@ public class AutoGrader {
 					result += s;
 				}
 			//} catch (EmptyStackException e) {}
-			return name + ":\n\n" + result + "\n" + testOutput;
+			return name + ":\n\n" + result + "\n" + name + ":\n\n" + testOutput;
 		}
 		public void addDescription (String newDescription) {
 			description.add(newDescription);
