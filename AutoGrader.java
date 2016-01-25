@@ -109,6 +109,7 @@ public class AutoGrader {
 				System.out.println(s.getOldGrade());
 			}
 			s.grade(((REGRADE)?s.getOldGrade() + "\nYour new grade: ":"") + kbReader.nextLine());
+			for (int i = 0; i < 80; i++) System.out.println("-");
 		}
 		try {
 			FileWriter fw = new FileWriter(new File(projectRoot + "\\grades.csv"));
