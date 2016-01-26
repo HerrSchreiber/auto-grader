@@ -221,7 +221,7 @@ public class AutoGrader {
                 if ( f.isDirectory() && !f.getName().equals("__MACOSX")) {
                     walkAndCompile( f.getAbsolutePath() );
                 }
-                else if (!f.isDirectory() && f.getName().substring(f.getName().length() - 5).equals(".java")) {
+                else if (!f.isDirectory() && f.getName().length() > 5 && f.getName().substring(f.getName().length() - 5).equals(".java")) {
                     try {
                     	if (testFile != null){
 	                    	File testFileCopy = new File(f.getParent() + "\\" + testFile.getName());
