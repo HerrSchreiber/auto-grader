@@ -36,11 +36,11 @@ public class Project16Test {
     	printTest("elevensBoardNewGameTest", elevensBoardNewGameTest());
     	printTest("elevensBoardDeckSizeTest", elevensBoardDeckSizeTest());
     	printTest("elevensBoardIsEmptyTest", elevensBoardIsEmptyTest());
-        printTest("elevensBoardCardIndexesTest", elevensBoardCardIndexesTest());
-        printTest("elevensBoardGameIsWonTest", elevensBoardGameIsWonTest());
-        printTest("elevensBoardAnotherPlayTest", elevensBoardAnotherPlayTest());
+			printTest("elevensBoardCardIndexesTest", elevensBoardCardIndexesTest());
+			printTest("elevensBoardGameIsWonTest", elevensBoardGameIsWonTest());
+			printTest("elevensBoardAnotherPlayTest", elevensBoardAnotherPlayTest());
 
-        printFinalSummary();
+			printFinalSummary();
 
                
     }
@@ -97,7 +97,7 @@ public class Project16Test {
         boolean success = false;
         
         try {
-        	for (int i = 0; i < 10; i++) {
+        	for (int i = 0; i < 9; i++) {
 	            ElevensBoard eb = new ElevensBoard();
 	            Card c1 = eb.cardAt(0);
 	            Card c2 = eb.cardAt(1);
@@ -202,7 +202,7 @@ public class Project16Test {
         boolean success = true;
         ArrayList<Integer> selectedCards = new ArrayList<Integer>();
         for (int i = 0; i < 9; i++) selectedCards.add(i);
-        try {
+					try {
             ElevensBoard eb;
 
             // 11-pair test
