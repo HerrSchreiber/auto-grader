@@ -132,7 +132,7 @@ public class Project17Test {
             Scanner fileReader = new Scanner(new File("list.html"));
             while (fileReader.hasNext()) {
                 String temp = fileReader.nextLine();
-                if (temp.contains("li") && temp.contains("blorgons")) success = true;
+                if (temp.contains("blorgons")) success = true;
             }
 
         } catch (Exception e) {
