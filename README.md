@@ -12,3 +12,4 @@ In order to use this program, use the following arguments:
 					-r or -R for Regrades
 		
 		i.e. java AutoGrader -a -2
+[![GPL v3](https://becomingaglider.files.wordpress.com/2011/02/gpl-v3-80x15-1.png)](http://www.gnu.org/licenses/gpl.html)
