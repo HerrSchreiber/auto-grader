@@ -44,6 +44,7 @@ public class Project21Test {
         printTest("invalidDimensionMultiplyTest", invalidDimensionMultiplyTest());
         printTest("positiveDeterminantTest", positiveDeterminantTest());
         printTest("negativeDeterminantTest", negativeDeterminantTest());
+        printTest("bigDeterminantTest *EC*", bigDeterminantTest());
         printTest("inverseTest", inverseTest());
         
     	printFinalSummary();
@@ -122,7 +123,7 @@ public class Project21Test {
         
         try {
             double[][] a = {{2, 3, 1}, {4, 1, 6}};
-            double[][] b = {{5, 1, 2}, {3, 2}};
+            double[][] b = {{5, 1}, {3, 2}};
             double[][] sum = MatrixMath.add(a, b);
             success = false;
 
@@ -211,7 +212,7 @@ public class Project21Test {
         
         try {
             double[][] a = {{2, 3, 1}, {4, 1, 6}};
-            double[][] b = {{5, 1, 2}, {3, 2}};
+            double[][] b = {{5, 1}, {3, 2}};
             double[][] diff = MatrixMath.subtract(a, b);
             success = false;
 
@@ -235,11 +236,11 @@ public class Project21Test {
         try {
             double[][] a = {{2, 3}, {4, 1}};
             double[][] b = {{5, 1}, {3, 2}};
-            double[][] diff = MatrixMath.multiply(a, b);
+            double[][] product = MatrixMath.multiply(a, b);
             double[][] correctProduct = {{19, 8}, {23, 6}};
-            for (int i = 0; i < diff.length; i++) {
-                for (int j = 0; j < diff[0].length; j++) {
-                    if (!isClose(diff[i][j], correctProduct[i][j])) success = false;
+            for (int i = 0; i < product.length; i++) {
+                for (int j = 0; j < product[0].length; j++) {
+                    if (!isClose(product[i][j], correctProduct[i][j])) success = false;
                 }
             }
 
@@ -300,7 +301,7 @@ public class Project21Test {
         
         try {
             double[][] a = {{2, 3, 1}, {4, 1, 6}};
-            double[][] b = {{5, 1, 2}, {3, 2}};
+            double[][] b = {{5, 1}, {3, 2}};
             double[][] product = MatrixMath.multiply(a, b);
             success = false;
 
@@ -351,6 +352,23 @@ public class Project21Test {
 
         return success;
     }
+
+    private boolean bigDeterminantTest() {
+        boolean success = true;
+        
+        try {
+            double[][] a = {{1,2,3,4,5},{11,11,13,13,15},{-5,-4,-1,-2,-3},{1,6,2,4,5},{5,4,3,2,1}};
+            double det = MatrixMath.det(a);
+            double correctDet = -264;
+            if (!isClose(det, correctDet)) success = false;
+
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            success = false;
+        }
+
+        return success;
+    } 
 
     // Inverse test     
 
