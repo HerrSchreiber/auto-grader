@@ -355,6 +355,7 @@ public class Project21Test {
 
     private boolean bigDeterminantTest() {
         boolean success = true;
+        total--; // Extra Credit
         
         try {
             double[][] a = {{1,2,3,4,5},{11,11,13,13,15},{-5,-4,-1,-2,-3},{1,6,2,4,5},{5,4,3,2,1}};
