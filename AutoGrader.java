@@ -60,7 +60,7 @@ public class AutoGrader {
 		}
 		// Eventually refactor this following part to get the project root from the user and
 		// store in a config file.
-		projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
+		projectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2016-2017\\";
 
 		String testFilePath = "Tests\\";
 		switch (classType) {
