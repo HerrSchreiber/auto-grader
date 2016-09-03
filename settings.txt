@@ -1,2 +1,2 @@
-watch_folder: E:\Workspace\Masters Project Extra Stuff\WatchDir\DirWatcher\test
-output_folder: C:\Users\Rob\Desktop
+watch_folder: watch
+output_folder: output
