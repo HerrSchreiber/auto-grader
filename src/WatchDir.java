@@ -154,6 +154,7 @@ public class WatchDir {
         }
 
         Path dir = Paths.get(settings.get("watch_folder"));
+        if (!dir.toFile().exists()) dir.toFile().mkdir();
         new WatchDir(dir).processEvents();
     }
 }
