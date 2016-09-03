@@ -3,7 +3,7 @@
 *.com
 *.class
 *.dll
-*.exe
+#*.exe
 *.o
 *.so
  
@@ -15,7 +15,7 @@
 *.dmg
 *.gz
 *.iso
-*.jar
+#*.jar
 *.rar
 *.tar
 *.zip
