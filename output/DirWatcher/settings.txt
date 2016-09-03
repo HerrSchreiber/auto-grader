@@ -1,0 +1,2 @@
+watch_folder: E:\Workspace\Masters Project Extra Stuff\WatchDir\DirWatcher\test
+output_folder: E:/Workspace/Masters Project Extra Stuff/WatchDir/DirWatcher/output
