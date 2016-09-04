@@ -5,7 +5,7 @@ import java.nio.file.Path;
 public class Grader {
 	private Gradebook gradebook;
 	
-	public static void Grade(Path p) {
+	public static void grade(ProjectSubmission project) {
 
 	}
 }
