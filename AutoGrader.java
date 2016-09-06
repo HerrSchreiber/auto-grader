@@ -392,7 +392,7 @@ public class AutoGrader {
 		 * @return The old grades for this student for this project.
 		 */
 		public String getOldGrade() {
-			String oldProjectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
+			String oldProjectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2016-2017\\";
 			switch (classType) {
 				case AP_COMPUTER_SCIENCE:
 					oldProjectRoot += "AP Computer Science\\";
