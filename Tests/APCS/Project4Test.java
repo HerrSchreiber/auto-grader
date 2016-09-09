@@ -22,7 +22,7 @@ public class Project4Test {
         printTest("polygonSubclassTest", polygonSubclassTest());
         printTest("polygonInstantiationTest", polygonInstantiationTest());
         printTest("polygonPerimeterTest", polygonPerimeterTest());
-        printTest("polygonAreaTest", polygonAreaTest());
+        printTest("polygonAreaTest *EC*", polygonAreaTest());
         /////////////////
         //final verdict
         /////////////////
@@ -151,6 +151,7 @@ public class Project4Test {
 
     private boolean polygonAreaTest() {
         boolean success = true;
+        total--; // Extra Credit
         
         try {
             Point p1 = new Point(0, 0);

@@ -23,7 +23,7 @@ public class Project2Test {
 		printTest("lineLengthTest", lineLengthTest());
 		printTest("lineMidpointTest", lineMidpointTest());
 		printTest("lineToStringTest", lineToStringTest());		
-		printTest("linePerpBisectorTest", linePerpBisectorTest());
+		printTest("linePerpBisectorTest *EC*", linePerpBisectorTest());
 		/////////////////
 		//final verdict
 		/////////////////
@@ -153,6 +153,7 @@ public class Project2Test {
 	
 	private boolean linePerpBisectorTest() {
 		boolean success = true;
+		total--; // Extra Credit
 		
 		try {
 			Point p1 = new Point(1.5, 2.5);

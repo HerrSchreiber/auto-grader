@@ -34,7 +34,7 @@ public class Project9Test {
         printTest("isVowelTest", isVowelTest());
         printTest("e2pConsonantTest", e2pConsonantTest());
         printTest("e2pVowelTest", e2pVowelTest());
-        printTest("p2eTest", p2eTest());
+        printTest("p2eTest *EC*", p2eTest());
 
         printFinalSummary();
     }
@@ -101,6 +101,7 @@ public class Project9Test {
 
     private boolean p2eTest() {
         boolean success = true;
+        total--; // Extra Credit
         
         try {
             PigLatinTranslator p = new PigLatinTranslator();

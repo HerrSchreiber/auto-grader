@@ -21,7 +21,7 @@ public class Project3Test {
         printTest("triangleGetCenterTest", triangleGetCenterTest());
         printTest("triangleGetPerimeterTest", triangleGetPerimeterTest());
         printTest("triangleGetAreaTest", triangleGetAreaTest());
-        printTest("triangleGetAltitudeTest", triangleGetAltitudeTest());
+        printTest("triangleGetAltitudeTest *EC*", triangleGetAltitudeTest());
         /////////////////
         //final verdict
         /////////////////
@@ -141,6 +141,7 @@ public class Project3Test {
 
     private boolean triangleGetAltitudeTest() {
         boolean success = true;
+        total--; // Extra Credit
         
         try {
             Point p1 = new Point(1, 2);
