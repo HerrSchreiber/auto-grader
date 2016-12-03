@@ -173,6 +173,8 @@ public class Project5Test {
 			}
 			Arrays.sort(ary);
 			Iterable<Integer> keys = rbbst.keys();
+			Iterator<Integer> keysIterator = keys.iterator();
+            		if (!keysIterator.hasNext()) success = false;
 			int i = 0;
 			for (Integer key : keys) {
 				if (!key.equals(ary[i])) success = false;

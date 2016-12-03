@@ -364,6 +364,8 @@ public class Project4Test {
 			}
 			Arrays.sort(ary);
 			Iterable<Double> keys = ist.keys();
+			Iterator<Double> keysIterator = keys.iterator();
+            		if (!keysIterator.hasNext()) success = false;
 			int i = 0;
 			for (Double key : keys) {
 				if (!key.equals((double)ary[i])) success = false;
