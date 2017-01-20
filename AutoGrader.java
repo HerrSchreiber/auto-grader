@@ -124,7 +124,7 @@ public class AutoGrader {
 				}
 				else System.out.println(s.getName() + "'s email was not sent. Their email address is not in the emails.csv file.");
 				if (REGRADE) {
-					String oldProjectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2015-2016\\";
+					String oldProjectRoot = System.getProperty("user.home") + "\\google drive\\CS Projects\\2016-2017\\";
 					switch (classType) {
 						case AP_COMPUTER_SCIENCE:
 							oldProjectRoot += "AP Computer Science\\";
